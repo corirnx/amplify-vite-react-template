@@ -34,8 +34,14 @@ const ProductData = a.model({
   savingsplans: a.hasMany('SavingsplanData', 'productDataSavingsplansId'),
   events: a.hasMany('EventData', 'productDataEventsId'),
   contractDataProductsId: a.string(),
+  // ,ref() would also work, but for week references
   contractData: a.belongsTo('ContractData', 'contractDataProductsId'),
-});
+}).authorization((allow) => [
+  // TODO: What needs to be set here?  
+  allow.authenticated(),
+  allow.owner()
+]);
+
 
 
 //
@@ -58,9 +64,15 @@ const TodoData = a.model({
   updatedAt: a.timestamp().required(),
   userDetailDataTodosId: a.string(),
   contractDataTodosId: a.string(),
+  // .ref() would also work, but for week references
   userDetail: a.belongsTo('UserDetailData', 'userDetailDataTodosId'),
   contract: a.belongsTo('ContractData', 'contractDataTodosId'),
-});
+}).authorization((allow) => [
+  // TODO: What needs to be set here?  
+  allow.authenticated(),
+  allow.owner()
+]);
+
 
 
 //
@@ -119,7 +131,12 @@ const ContractData = a.model({
   todos: a.hasMany('TodoData', 'contractDataTodosId'),
   savingsplans: a.hasMany('SavingsplanData', 'contractDataSavingsplansId'),
   events: a.hasMany('EventData', 'contractDataEventsId'),
-});
+}).authorization((allow) => [
+  // TODO: What needs to be set here?  
+  allow.authenticated(),
+  allow.owner()
+]);
+
 
 
 //
@@ -145,8 +162,14 @@ const DepotItemData = a.model({
   createdAt: a.timestamp().required(),
   updatedAt: a.timestamp(),
   productDataDepotItemsId: a.string(),
+  // .ref() would also work, but for week references
   product: a.belongsTo('ProductData', 'productDataDepotItemsId'),
-});
+}).authorization((allow) => [
+  // TODO: What needs to be set here?  
+  allow.authenticated(),
+  allow.owner()
+]);
+
 
 //
 // EXTERNAL ACCOUNT
@@ -161,8 +184,14 @@ const ExternalAccountData = a.model({
   name: a.string().required(),
   subId: a.string().required(),
   savingsplanDataDebitAccountId: a.string().required(),
+  // .ref() would also work, but for week references
   savingsplan: a.belongsTo('SavingsplanData', 'savingsplanDataDebitAccountId'),
-});
+}).authorization((allow) => [
+  // TODO: What needs to be set here?  
+  allow.authenticated(),
+  allow.owner()
+]);
+
 
 //
 // ALLOCATION
@@ -187,8 +216,14 @@ const AllocationData = a.model({
   subId: a.string().required(),
   accounts: a.hasMany('BankAccountData', 'allocationDataAccountsId'),
   contractDataAllocationsId: a.string().required(),
+  // .ref() would also work, but for week references
   contract: a.belongsTo('ContractData', 'contractDataAllocationsId'),
-});
+}).authorization((allow) => [
+  // TODO: What needs to be set here?  
+  allow.authenticated(),
+  allow.owner()
+]);
+
 
 
 //
@@ -265,13 +300,19 @@ const EventData = a.model({
   bankAccountDataEventsId: a.string(),
   wphgDataEventsId: a.string(),
   savingsplanDataEventsId: a.string(),
+  // .ref() would also work, but for week references
   userDetail: a.belongsTo('UserDetailData', 'userDetailDataEventsId'),
   contract: a.belongsTo('ContractData', 'contractDataEventsId'),
   product: a.belongsTo('ProductData', 'productDataEventsId'),
   bankAccount: a.belongsTo('BankAccountData', 'bankAccountDataEventsId'),
   wphg: a.belongsTo('WphgData', 'wphgDataEventsId'),
   savingsplan: a.belongsTo('SavingsplanData', 'savingsplanDataEventsId'),
-});
+}).authorization((allow) => [
+  // TODO: What needs to be set here?  
+  allow.authenticated(),
+  allow.owner()
+]);
+
 
 //
 // SAVINGSPLAN 
@@ -300,9 +341,14 @@ const SavingsplanData = a.model({
   subId: a.string().required(),
   contractDataSavingsplansId: a.string(),
   productDataSavingsplansId: a.string(),
+  // .ref() would also work, but for week references
   contract: a.belongsTo('ContractData', 'contractDataSavingsplansId'),
   product: a.belongsTo('ProductData', 'productDataSavingsplansId'),
-});
+}).authorization((allow) => [
+  // TODO: What needs to be set here?  
+  allow.authenticated(),
+  allow.owner()
+]);
 
 
 //
@@ -316,8 +362,14 @@ const SavingsplanSplitData = a.model({
   updatedAt: a.timestamp(),
   subId: a.string().required(),
   savingsplanDataSplitId: a.string(),
+  // .ref() would also work, but for week references
   savingsplan: a.belongsTo('SavingsplanData', 'savingsplanDataSplitId'),
-});
+}).authorization((allow) => [
+  // TODO: What needs to be set here?  
+  allow.authenticated(),
+  allow.owner()
+]);
+
 
 
 //
@@ -433,7 +485,12 @@ const UserDetailData = a.model({
   updatedAt: a.timestamp().required(),
   events: a.hasMany('EventData', 'userDetailDataEventsId'),
   todos: a.hasMany('TodoData', 'userDetailDataTodosId'),
-});
+}).authorization((allow) => [
+  // TODO: What needs to be set here?  
+  allow.authenticated(),
+  allow.owner()
+]);
+
 
 
 //
@@ -463,12 +520,14 @@ const BankAccountData = a.model({
   contractDataAccountsId: a.string().required(),
   productDataAccountsId: a.string().required(),
   allocationDataAccountsId: a.string().required(),
+  // .ref() would also work, but for week references
   contract: a.belongsTo('ContractData', 'contractDataAccountsId'),
   product: a.belongsTo('ProductData', 'productDataAccountsId'),
   allocation: a.belongsTo('AllocationData', 'allocationDataAccountsId'),
 }).authorization((allow) => [
   // TODO: What needs to be set here?  
-  allow.owner('userPools')
+  allow.authenticated(),
+  allow.owner()
 ]);
 
 
