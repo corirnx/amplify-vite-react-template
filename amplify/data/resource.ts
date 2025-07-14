@@ -34,6 +34,7 @@ const ProductData = a.model({
   savingsplans: a.hasMany('SavingsplanData', 'productDataSavingsplansId'),
   events: a.hasMany('EventData', 'productDataEventsId'),
   contractDataProductsId: a.string(),
+  contractData: a.belongsTo('ContractData', 'contractDataProductsId'),
 });
 
 
@@ -57,6 +58,8 @@ const TodoData = a.model({
   updatedAt: a.timestamp().required(),
   userDetailDataTodosId: a.string(),
   contractDataTodosId: a.string(),
+  userDetail: a.belongsTo('UserDetailData', 'userDetailDataTodosId'),
+  contract: a.belongsTo('ContractData', 'contractDataTodosId'),
 });
 
 
@@ -142,6 +145,7 @@ const DepotItemData = a.model({
   createdAt: a.timestamp().required(),
   updatedAt: a.timestamp(),
   productDataDepotItemsId: a.string(),
+  product: a.belongsTo('ProductData', 'productDataDepotItemsId'),
 });
 
 //
@@ -157,6 +161,7 @@ const ExternalAccountData = a.model({
   name: a.string().required(),
   subId: a.string().required(),
   savingsplanDataDebitAccountId: a.string().required(),
+  savingsplan: a.belongsTo('SavingsplanData', 'savingsplanDataDebitAccountId'),
 });
 
 //
@@ -182,6 +187,7 @@ const AllocationData = a.model({
   subId: a.string().required(),
   accounts: a.hasMany('BankAccountData', 'allocationDataAccountsId'),
   contractDataAllocationsId: a.string().required(),
+  contract: a.belongsTo('ContractData', 'contractDataAllocationsId'),
 });
 
 
@@ -259,6 +265,12 @@ const EventData = a.model({
   bankAccountDataEventsId: a.string(),
   wphgDataEventsId: a.string(),
   savingsplanDataEventsId: a.string(),
+  userDetail: a.belongsTo('UserDetailData', 'userDetailDataEventsId'),
+  contract: a.belongsTo('ContractData', 'contractDataEventsId'),
+  product: a.belongsTo('ProductData', 'productDataEventsId'),
+  bankAccount: a.belongsTo('BankAccountData', 'bankAccountDataEventsId'),
+  wphg: a.belongsTo('WphgData', 'wphgDataEventsId'),
+  savingsplan: a.belongsTo('SavingsplanData', 'savingsplanDataEventsId'),
 });
 
 //
@@ -288,6 +300,8 @@ const SavingsplanData = a.model({
   subId: a.string().required(),
   contractDataSavingsplansId: a.string(),
   productDataSavingsplansId: a.string(),
+  contract: a.belongsTo('ContractData', 'contractDataSavingsplansId'),
+  product: a.belongsTo('ProductData', 'productDataSavingsplansId'),
 });
 
 
@@ -302,6 +316,7 @@ const SavingsplanSplitData = a.model({
   updatedAt: a.timestamp(),
   subId: a.string().required(),
   savingsplanDataSplitId: a.string(),
+  savingsplan: a.belongsTo('SavingsplanData', 'savingsplanDataSplitId'),
 });
 
 
@@ -448,6 +463,9 @@ const BankAccountData = a.model({
   contractDataAccountsId: a.string().required(),
   productDataAccountsId: a.string().required(),
   allocationDataAccountsId: a.string().required(),
+  contract: a.belongsTo('ContractData', 'contractDataAccountsId'),
+  product: a.belongsTo('ProductData', 'productDataAccountsId'),
+  allocation: a.belongsTo('AllocationData', 'allocationDataAccountsId'),
 }).authorization((allow) => [
   // TODO: What needs to be set here?  
   allow.owner('userPools')
