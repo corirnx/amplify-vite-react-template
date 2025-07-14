@@ -448,7 +448,10 @@ const BankAccountData = a.model({
   contractDataAccountsId: a.string().required(),
   productDataAccountsId: a.string().required(),
   allocationDataAccountsId: a.string().required(),
-});
+}).authorization((allow) => [
+  // TODO: What needs to be set here?  
+  allow.owner('userPools')
+]);
 
 
 const schema = a.schema({
