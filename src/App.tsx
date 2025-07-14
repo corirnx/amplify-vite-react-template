@@ -1,31 +1,48 @@
-import { useEffect, useState } from "react";
 import type { Schema } from "../amplify/data/resource";
 import { generateClient } from "aws-amplify/data";
 
 const client = generateClient<Schema>();
 
 function App() {
-  //const [todos, setTodos] = useState<Array<Schema["Todo"]["type"]>>([]);
+  console.log("Available models:", Object.keys(client.models));
+  // const [assets, setAsset] = useState<Array<Schema["AssetData"]["type"]>>([]);
+  // useEffect(() => {
+  //   client.models.AssetData.observeQuery().subscribe({
+  //     next: (data) => setAsset([...data.items]),
+  //   });
+  // }, []);
 
-  useEffect(() => {
-    // client.models.Todo.observeQuery().subscribe({
-    //   next: (data) => setTodos([...data.items]),
-    // });
-  }, []);
-
-  function createTodo() {
-    //client.models.Todo.create({ content: window.prompt("Todo content") });
-  }
+  // async function createAsset() {
+  //   // Replace these values with real data as needed
+  //   await client.models.AssetData.create({
+  //     assetClass: "STOCKS",
+  //     assetClass1: "Equity",
+  //     assetClass2: "Large Cap",
+  //     category: "Tech",
+  //     currency: "USD",
+  //     exchangeRate: 1.0,
+  //     isin: "US1234567890",
+  //     paperLink: "https://example.com",
+  //     name: "Example Asset",
+  //     shortName: "ExAsset",
+  //     ter: 0.15,
+  //     createdAt: new Date().toISOString(),
+  //     updatedAt: new Date().toISOString(),
+  //   });
+  //   alert("Asset created!");
+  // }
 
   return (
     <main>
-      <h1>My todos</h1>
-      <button onClick={createTodo}>+ new</button>
+      <h1>My Assets</h1>
+      {/* <button onClick={createAsset}>+ new Asset</button>
       <ul>
-        {/* {todos.map((todo) => (
-          <li key={todo.id}>{todo.content}</li>
-        ))} */}
-      </ul>
+        <li>
+          {assets.length === 0
+            ? "No todos yet. Click the button to create one."
+            : `You have ${assets.length} todos.`}
+        </li>
+      </ul> */}
       <div>
         🥳 App successfully hosted. Try creating a new todo.
         <br />

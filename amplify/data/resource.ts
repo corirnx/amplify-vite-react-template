@@ -254,7 +254,8 @@ const AssetData = a.model({
 }).authorization((allow) => [
   // TODO: What needs to be set here?  
   allow.authenticated(),
-  allow.owner()
+  allow.owner(),
+  allow.guest()
 ]);
 
 
@@ -563,8 +564,17 @@ const schema = a.schema({
   WphgData,
 });
 
+export type Schema = typeof schema;
+
 export const data = defineData({
   schema,
+  // authorizationModes: {
+  //   defaultAuthorizationMode: "apiKey",
+  //   apiKeyAuthorizationMode: {
+  //     expiresInDays: 30,
+  //   },
+  // },
 });
 
-export type Schema = typeof schema;
+
+
