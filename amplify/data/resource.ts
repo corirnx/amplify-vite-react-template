@@ -84,7 +84,12 @@ const WphgData = a.model({
   events: a.hasMany('EventData', 'wphgDataEventsId'),
   subId: a.string().required(),
   updatedAt: a.timestamp().required(),
-});
+}).authorization((allow) => [
+  // TODO: What needs to be set here?  
+  allow.authenticated(),
+  allow.owner()
+]);
+
 
 
 //
@@ -246,7 +251,12 @@ const AssetData = a.model({
   ter: a.float().required(),
   createdAt: a.timestamp().required(),
   updatedAt: a.timestamp().required(),
-});
+}).authorization((allow) => [
+  // TODO: What needs to be set here?  
+  allow.authenticated(),
+  allow.owner()
+]);
+
 
 
 //
@@ -259,7 +269,12 @@ const ConfigData = a.model({
   data: a.string(),
   createdAt: a.timestamp().required(),
   updatedAt: a.timestamp().required(),
-});
+}).authorization((allow) => [
+  // TODO: What needs to be set here?  
+  allow.authenticated(),
+  allow.owner()
+]);
+
 
 
 //
