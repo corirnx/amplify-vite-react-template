@@ -797,13 +797,15 @@ const TransferData = a.model({
   voucherCode: a.string(),
   voucherSerialNumber: a.string(),
   platformMoneyTransferId: a.string(),
-  portfolioInvestmentDataTransfersId: a.string(),
 
   events: a.hasMany('EventData', 'transferDataEventsId'),
 
   bankAccountDataTransfersId: a.string(),
+  portfolioInvestmentDataTransfersId: a.string(),
+
   // TODO: .ref() or .belongsTo()
   bankAccount: a.belongsTo('BankAccountData', 'bankAccountDataTransfersId'),
+  portfolioInvestment: a.belongsTo('PortfolioInvestmentData', 'portfolioInvestmentDataTransfersId'),
 
   clusterId: a.string().required(),
   // TODO: comma-separated string or JSON
