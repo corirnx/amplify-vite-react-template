@@ -26,7 +26,7 @@ const ProductData = a.model({
   contractDataProductsId: a.string(),
   // TODO: .ref() or .belongsTo()
   contract: a.belongsTo('ContractData', 'contractDataProductsId'),
-  
+
   clusterId: a.string().required(),
   // TODO: comma-separated string or JSON
   subId: a.string().required(),
@@ -808,7 +808,7 @@ const TransferData = a.model({
   clusterId: a.string().required(),
   // TODO: comma-separated string or JSON
   subId: a.string().required(),
-}).identifier(['id', 'createdAt'])
+}).identifier(['id']) //, 'createdAt'])
   .secondaryIndexes((index) => [
     index("portfolioInvestmentDataTransfersId"),
     index("bankAccountDataTransfersId"),
