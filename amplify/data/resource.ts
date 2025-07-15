@@ -114,7 +114,7 @@ const TodoData = a.model({
 //
 
 const ContractAccountType = a.enum(['SINGLE', 'JOINT', 'CHILD_SINGLE', 'CHILD_JOINT']);
-const ContractRole = a.enum(['OWNER', 'LIMITED_OWNER', 'LEGAL_GUARDIAN', 'PROXY']);
+// const ContractRole = a.enum(['OWNER', 'LIMITED_OWNER', 'LEGAL_GUARDIAN', 'PROXY']);
 const ContractStatus = a.enum(['OPEN', 'PENDING', 'IN_PROGRESS', 'AVALOQ', 'IN_CLOSE', 'CLOSED']);
 const ContractServicePackage = a.enum([
   'QUIRION_DIGITAL',
@@ -125,25 +125,25 @@ const ContractServicePackage = a.enum([
 const RiskClass = a.enum(['A', 'B', 'C', 'D', 'E']);
 
 // non-model type
-const ContractUserData = a.model({
-  id: a.id().required(),
-  platformUserId: a.string().required(),
-  role: ContractRole,
-});
+// const ContractUserData = a.model({
+//   id: a.id().required(),
+//   platformUserId: a.string().required(),
+//   role: ContractRole,
+// });
 
 // non-model type
-const ContractDeclarationData = a.model({
-  acceptContract: a.timestamp(),
-  churchTax: a.timestamp(),
-  confirmOverviewData: a.timestamp(),
-  confirmTax: a.timestamp(),
-  noPEP: a.timestamp(),
-  noTaxUS: a.timestamp(),
-  onOwnAccount: a.timestamp(),
-  quirinAccount: a.timestamp(),
-  quirionAssetManagement: a.timestamp(),
-  quirionTermsOfService: a.timestamp(),
-});
+// const ContractDeclarationData = a.model({
+//   acceptContract: a.timestamp(),
+//   churchTax: a.timestamp(),
+//   confirmOverviewData: a.timestamp(),
+//   confirmTax: a.timestamp(),
+//   noPEP: a.timestamp(),
+//   noTaxUS: a.timestamp(),
+//   onOwnAccount: a.timestamp(),
+//   quirinAccount: a.timestamp(),
+//   quirionAssetManagement: a.timestamp(),
+//   quirionTermsOfService: a.timestamp(),
+// });
 
 const ContractData = a.model({
   id: a.id().required(),
@@ -460,10 +460,10 @@ const UserOccupationIndustry = a.enum([
 ]);
 
 // non-model type
-const UserTaxId = a.model({
-  country: a.string().required(),
-  tin: a.string().required(),
-});
+// const UserTaxId = a.model({
+//   country: a.string().required(),
+//   tin: a.string().required(),
+// });
 
 
 const UserDetailData = a.model({
@@ -984,27 +984,27 @@ const PostboxDocumentData = a.model({
 // ContractSubscriptionDetails
 //
 
-const ContractSubscriptionIneligibilityReason = a.enum([
-  'NOT_ENOUGH_CASH',
-  'STILL_IN_PACKAGE'
-]);
+// const ContractSubscriptionIneligibilityReason = a.enum([
+//   'NOT_ENOUGH_CASH',
+//   'STILL_IN_PACKAGE'
+// ]);
 
 // non-model type
-const ContractSubscriptionDetails = a.model({
-  servicePackage: ContractServicePackage,
-  isAvailable: a.boolean(),
-  isCurrentlyActive: a.boolean(),
-  isCustomerEligible: a.boolean(),
-  reasonsForIneligibility: a.json(), // [ContractSubscriptionIneligibilityReason]!
-  contractBalance: a.float(),
-  earliestCancelDate: a.date(),
-  earliestStartDate: a.date(),
-  executionStartDate: a.date(),
-  futurePackage: ContractServicePackage,
-  minimumContractPeriod: a.integer(),
-  minimumInvest: a.float(),
-  pricePerMonth: a.float(),
-});
+// const ContractSubscriptionDetails = a.model({
+//   servicePackage: ContractServicePackage,
+//   isAvailable: a.boolean(),
+//   isCurrentlyActive: a.boolean(),
+//   isCustomerEligible: a.boolean(),
+//   reasonsForIneligibility: a.json(), // [ContractSubscriptionIneligibilityReason]!
+//   contractBalance: a.float(),
+//   earliestCancelDate: a.date(),
+//   earliestStartDate: a.date(),
+//   executionStartDate: a.date(),
+//   futurePackage: ContractServicePackage,
+//   minimumContractPeriod: a.integer(),
+//   minimumInvest: a.float(),
+//   pricePerMonth: a.float(),
+// });
 
 
 
@@ -1012,653 +1012,653 @@ const ContractSubscriptionDetails = a.model({
 // Platform 
 //
 
-const PlatformOnboardingRelation = a.enum([
-  'CONTRACT',
-  'PRODUCT'
-]);
+// const PlatformOnboardingRelation = a.enum([
+//   'CONTRACT',
+//   'PRODUCT'
+// ]);
 
-const PlatformOnboardingInvestmentPaymentMethod = a.enum([
-  'WIRE',
-  'DIRECT_DEBIT',
-  'INTERNAL_TRANSFER'
-]);
+// const PlatformOnboardingInvestmentPaymentMethod = a.enum([
+//   'WIRE',
+//   'DIRECT_DEBIT',
+//   'INTERNAL_TRANSFER'
+// ]);
 
-const PlatformOnboardingSavingsPlanPaymentMethod = a.enum([
-  'WIRE',
-  'DIRECT_DEBIT'
-]);
+// const PlatformOnboardingSavingsPlanPaymentMethod = a.enum([
+//   'WIRE',
+//   'DIRECT_DEBIT'
+// ]);
 
-const PlatformOnboardingInvestmentObjective = a.enum([
-  'RETIREMENT',
-  'GROWTH',
-  'PRESERVATION',
-  'CUSHION',
-  'OTHER'
-]);
+// const PlatformOnboardingInvestmentObjective = a.enum([
+//   'RETIREMENT',
+//   'GROWTH',
+//   'PRESERVATION',
+//   'CUSHION',
+//   'OTHER'
+// ]);
 
-const PlatformOnboardingRiskPreference = a.enum([
-  'LOWER_EXPECTATIONS',
-  'BUY',
-  'SELL',
-  'INCREASE_RISK'
-]);
+// const PlatformOnboardingRiskPreference = a.enum([
+//   'LOWER_EXPECTATIONS',
+//   'BUY',
+//   'SELL',
+//   'INCREASE_RISK'
+// ]);
 
-const PlatformOnboardingRiskPerception = a.enum([
-  'THRILL',
-  'CHANCE',
-  'INSECURITY',
-  'DANGER'
-]);
+// const PlatformOnboardingRiskPerception = a.enum([
+//   'THRILL',
+//   'CHANCE',
+//   'INSECURITY',
+//   'DANGER'
+// ]);
 
-const PlatformOnboardingRiskTolerance = a.enum([
-  'FIVE_PERCENT',
-  'TEN_PERCENT',
-  'TWENTYFIVE_PERCENT',
-  'FIFTY_PERCENT',
-  'ANY'
-]);
+// const PlatformOnboardingRiskTolerance = a.enum([
+//   'FIVE_PERCENT',
+//   'TEN_PERCENT',
+//   'TWENTYFIVE_PERCENT',
+//   'FIFTY_PERCENT',
+//   'ANY'
+// ]);
 
-const PlatformOnboardingRiskAssessment = a.enum([
-  'LOW',
-  'AVERAGE',
-  'OUTSTANDING',
-  'HIGH'
-]);
+// const PlatformOnboardingRiskAssessment = a.enum([
+//   'LOW',
+//   'AVERAGE',
+//   'OUTSTANDING',
+//   'HIGH'
+// ]);
 
-const PlatformOnboardingExperienceKnowledge = a.enum([
-  'PROFESSIONAL',
-  'VERY_GOOD',
-  'GOOD',
-  'MEDIUM',
-  'BAD'
-]);
+// const PlatformOnboardingExperienceKnowledge = a.enum([
+//   'PROFESSIONAL',
+//   'VERY_GOOD',
+//   'GOOD',
+//   'MEDIUM',
+//   'BAD'
+// ]);
 
-const PlatformOnboardingExperienceCrashes = a.enum([
-  'KEEP',
-  'SELL',
-  'NONE'
-]);
+// const PlatformOnboardingExperienceCrashes = a.enum([
+//   'KEEP',
+//   'SELL',
+//   'NONE'
+// ]);
 
-const PlatformOnboardingExperienceTransactions = a.enum([
-  'MORE_THAN_FIVE',
-  'ONE_TO_FIVE',
-  'NONE'
-]);
+// const PlatformOnboardingExperienceTransactions = a.enum([
+//   'MORE_THAN_FIVE',
+//   'ONE_TO_FIVE',
+//   'NONE'
+// ]);
 
-const PlatformFreeAssetsRange = a.enum([
-  'RANGE_LESS_THAN_10K',
-  'RANGE_10K_TO_30K',
-  'RANGE_30K_TO_100K',
-  'RANGE_MORE_THAN_100K'
-]);
+// const PlatformFreeAssetsRange = a.enum([
+//   'RANGE_LESS_THAN_10K',
+//   'RANGE_10K_TO_30K',
+//   'RANGE_30K_TO_100K',
+//   'RANGE_MORE_THAN_100K'
+// ]);
 
-const PlatformTiedAssetsRange = a.enum([
-  'RANGE_NONE',
-  'RANGE_1_TO_10K',
-  'RANGE_10K_TO_30K',
-  'RANGE_30K_TO_100K',
-  'RANGE_MORE_THAN_100K'
-]);
+// const PlatformTiedAssetsRange = a.enum([
+//   'RANGE_NONE',
+//   'RANGE_1_TO_10K',
+//   'RANGE_10K_TO_30K',
+//   'RANGE_30K_TO_100K',
+//   'RANGE_MORE_THAN_100K'
+// ]);
 
-const PlatformLoansRange = a.enum([
-  'RANGE_NONE',
-  'RANGE_1_TO_10K',
-  'RANGE_10K_TO_30K',
-  'RANGE_30K_TO_100K',
-  'RANGE_MORE_THAN_100K'
-]);
+// const PlatformLoansRange = a.enum([
+//   'RANGE_NONE',
+//   'RANGE_1_TO_10K',
+//   'RANGE_10K_TO_30K',
+//   'RANGE_30K_TO_100K',
+//   'RANGE_MORE_THAN_100K'
+// ]);
 
-const PlatformMonthlyExpensesRange = a.enum([
-  'RANGE_LESS_THAN_1K',
-  'RANGE_1K_TO_2K',
-  'RANGE_2K_TO_3K',
-  'RANGE_3K_TO_4K',
-  'RANGE_4K_TO_5K',
-  'RANGE_MORE_THAN_5K'
-]);
+// const PlatformMonthlyExpensesRange = a.enum([
+//   'RANGE_LESS_THAN_1K',
+//   'RANGE_1K_TO_2K',
+//   'RANGE_2K_TO_3K',
+//   'RANGE_3K_TO_4K',
+//   'RANGE_4K_TO_5K',
+//   'RANGE_MORE_THAN_5K'
+// ]);
 
-const PlatformMonthlyIncomeRange = a.enum([
-  'RANGE_LESS_THAN_1500',
-  'RANGE_1500_TO_3K',
-  'RANGE_3K_TO_5K',
-  'RANGE_MORE_THAN_5K'
-]);
+// const PlatformMonthlyIncomeRange = a.enum([
+//   'RANGE_LESS_THAN_1500',
+//   'RANGE_1500_TO_3K',
+//   'RANGE_3K_TO_5K',
+//   'RANGE_MORE_THAN_5K'
+// ]);
 
-const InvestmentHorizon = a.enum([
-  'ZERO_TO_ONE',
-  'ONE_TO_THREE',
-  'THREE_TO_FIVE',
-  'FIVE_TO_TEN',
-  'TEN_TO_FIFTEEN',
-  'FIFTEEN_PLUS'
-]);
+// const InvestmentHorizon = a.enum([
+//   'ZERO_TO_ONE',
+//   'ONE_TO_THREE',
+//   'THREE_TO_FIVE',
+//   'FIVE_TO_TEN',
+//   'TEN_TO_FIFTEEN',
+//   'FIFTEEN_PLUS'
+// ]);
 
-const InvestmentStrategy = a.enum([
-  'STRATEGY_CASH_INVEST',
-  'STRATEGY_0_100',
-  'STRATEGY_10_90',
-  'STRATEGY_20_80',
-  'STRATEGY_30_70',
-  'STRATEGY_40_60',
-  'STRATEGY_50_50',
-  'STRATEGY_60_40',
-  'STRATEGY_70_30',
-  'STRATEGY_80_20',
-  'STRATEGY_90_10',
-  'STRATEGY_100_0'
-]);
+// const InvestmentStrategy = a.enum([
+//   'STRATEGY_CASH_INVEST',
+//   'STRATEGY_0_100',
+//   'STRATEGY_10_90',
+//   'STRATEGY_20_80',
+//   'STRATEGY_30_70',
+//   'STRATEGY_40_60',
+//   'STRATEGY_50_50',
+//   'STRATEGY_60_40',
+//   'STRATEGY_70_30',
+//   'STRATEGY_80_20',
+//   'STRATEGY_90_10',
+//   'STRATEGY_100_0'
+// ]);
 
-const RiskScore = a.enum([
-  'ONE',
-  'TWO',
-  'THREE',
-  'FOUR',
-  'FIVE'
-]);
+// const RiskScore = a.enum([
+//   'ONE',
+//   'TWO',
+//   'THREE',
+//   'FOUR',
+//   'FIVE'
+// ]);
 
-const Ownership = a.enum([
-  'PERSONAL',
-  'JOINT',
-  'CHILD',
-  'CHILD_JOINT'
-]);
+// const Ownership = a.enum([
+//   'PERSONAL',
+//   'JOINT',
+//   'CHILD',
+//   'CHILD_JOINT'
+// ]);
 
 
-const ProductChoice = a.enum([
-  'PORTFOLIO_INVESTMENT',
-  'ACCOUNT_INTEREST'
-]);
+// const ProductChoice = a.enum([
+//   'PORTFOLIO_INVESTMENT',
+//   'ACCOUNT_INTEREST'
+// ]);
 
-const SourceOfFunds = a.enum([
-  'AGRICULTURE_AND_FORESTRY',
-  'BUSINESS_OPERATIONS',
-  'CAPITAL_ASSETS',
-  'DISPOSAL_OF_OWN_TRADE',
-  'DONATION',
-  'INDEPENDENT_WORK',
-  'INHERITANCE',
-  'INSURANCE_BENEFIT',
-  'NONINDEPENDENT_WORK',
-  'RENTING_AND_LEASING',
-  'SALE_OF_OWN_PROPERTY',
-  'EMPTY',
-]);
+// const SourceOfFunds = a.enum([
+//   'AGRICULTURE_AND_FORESTRY',
+//   'BUSINESS_OPERATIONS',
+//   'CAPITAL_ASSETS',
+//   'DISPOSAL_OF_OWN_TRADE',
+//   'DONATION',
+//   'INDEPENDENT_WORK',
+//   'INHERITANCE',
+//   'INSURANCE_BENEFIT',
+//   'NONINDEPENDENT_WORK',
+//   'RENTING_AND_LEASING',
+//   'SALE_OF_OWN_PROPERTY',
+//   'EMPTY',
+// ]);
 
-// non-model type
-const PlatformOnboardingQuestionnaire = a.model({
-  question: a.string().required(),
-  answers: a.json().required(), // [String!]!
-  possibleAnswers: a.json().required(), // [String!]!
-});
+// // non-model type
+// const PlatformOnboardingQuestionnaire = a.model({
+//   question: a.string().required(),
+//   answers: a.json().required(), // [String!]!
+//   possibleAnswers: a.json().required(), // [String!]!
+// });
 
-// non-model type
-const PlatformOnboardingFinancialDetails = a.model({
-  currency: a.string().required(),
-  freeAssets: PlatformFreeAssetsRange,
-  loans: PlatformLoansRange,
-  monthlyIncome: PlatformMonthlyIncomeRange,
-  monthlyExpenses: PlatformMonthlyExpensesRange,
-  tiedAssets: PlatformTiedAssetsRange,
-});
+// // non-model type
+// const PlatformOnboardingFinancialDetails = a.model({
+//   currency: a.string().required(),
+//   freeAssets: PlatformFreeAssetsRange,
+//   loans: PlatformLoansRange,
+//   monthlyIncome: PlatformMonthlyIncomeRange,
+//   monthlyExpenses: PlatformMonthlyExpensesRange,
+//   tiedAssets: PlatformTiedAssetsRange,
+// });
 
-// non-model type
-const PlatformOnboardingGeneralInfo = a.model({
-  ownership: Ownership,
-  productChoice: ProductChoice,
-  sourceOfFunds: SourceOfFunds,
-  subscription: ContractServicePackage,
-  sustainability: a.boolean(),
-});
-
-// non-model type
-const PlatformOnboardingInvestmentDetails = a.model({
-  investmentAmount: a.float().required(),
-  investmentMandateId: a.string(),
-  investmentPaymentMethod: PlatformOnboardingInvestmentPaymentMethod,
-  savingsPlanAmount: a.float().required(),
-  savingsPlanPaymentMethod: PlatformOnboardingSavingsPlanPaymentMethod,
-  savingsPlanDay: a.integer(),
-  savingsPlanInterval: a.integer(),
-  savingsPlanIntervalType: SavingsPlanIntervalType,
-  savingsPlanMandateId: a.string(),
-});
+// // non-model type
+// const PlatformOnboardingGeneralInfo = a.model({
+//   ownership: Ownership,
+//   productChoice: ProductChoice,
+//   sourceOfFunds: SourceOfFunds,
+//   subscription: ContractServicePackage,
+//   sustainability: a.boolean(),
+// });
 
 // non-model type
-const PlatformOnboardingRiskProfile = a.model({
-  baseKnowledge: a.boolean(),
-  investmentHorizon: InvestmentHorizon,
-  manualInvestmentHorizon: a.integer(),
-  selectedStrategy: InvestmentStrategy,
-  possibleStrategies: a.json().required(), // [InvestmentStrategy!]
-  recommendedStrategy: InvestmentStrategy,
-  investmentObjective: PlatformOnboardingInvestmentObjective,
-  riskClass: RiskClass,
-  riskScore: RiskScore,
-  riskPreference: PlatformOnboardingRiskPreference,
-  riskPerception: PlatformOnboardingRiskPerception,
-  riskTolerance: PlatformOnboardingRiskTolerance,
-  riskAssessment: PlatformOnboardingRiskAssessment,
-  experienceKnowledge: PlatformOnboardingExperienceKnowledge,
-  experienceCrashes: PlatformOnboardingExperienceCrashes,
-  experienceTransactionsMoneyMarket: PlatformOnboardingExperienceTransactions,
-  experienceTransactionsSecurities: PlatformOnboardingExperienceTransactions,
-});
+// const PlatformOnboardingInvestmentDetails = a.model({
+//   investmentAmount: a.float().required(),
+//   investmentMandateId: a.string(),
+//   investmentPaymentMethod: PlatformOnboardingInvestmentPaymentMethod,
+//   savingsPlanAmount: a.float().required(),
+//   savingsPlanPaymentMethod: PlatformOnboardingSavingsPlanPaymentMethod,
+//   savingsPlanDay: a.integer(),
+//   savingsPlanInterval: a.integer(),
+//   savingsPlanIntervalType: SavingsPlanIntervalType,
+//   savingsPlanMandateId: a.string(),
+// });
+
+// // non-model type
+// const PlatformOnboardingRiskProfile = a.model({
+//   baseKnowledge: a.boolean(),
+//   investmentHorizon: InvestmentHorizon,
+//   manualInvestmentHorizon: a.integer(),
+//   selectedStrategy: InvestmentStrategy,
+//   possibleStrategies: a.json().required(), // [InvestmentStrategy!]
+//   recommendedStrategy: InvestmentStrategy,
+//   investmentObjective: PlatformOnboardingInvestmentObjective,
+//   riskClass: RiskClass,
+//   riskScore: RiskScore,
+//   riskPreference: PlatformOnboardingRiskPreference,
+//   riskPerception: PlatformOnboardingRiskPerception,
+//   riskTolerance: PlatformOnboardingRiskTolerance,
+//   riskAssessment: PlatformOnboardingRiskAssessment,
+//   experienceKnowledge: PlatformOnboardingExperienceKnowledge,
+//   experienceCrashes: PlatformOnboardingExperienceCrashes,
+//   experienceTransactionsMoneyMarket: PlatformOnboardingExperienceTransactions,
+//   experienceTransactionsSecurities: PlatformOnboardingExperienceTransactions,
+// });
 
 // non-model type
-const PlatformOnboardingDataset = a.model({
-  id: a.string().required(),
-  configVersion: a.integer(),
-  relation: PlatformOnboardingRelation,
-  parentId: a.string(),
-  createdAt: a.timestamp(),
-  updatedAt: a.timestamp(),
-  questionnaire: a.json().required(), // [PlatformOnboardingQuestionnaire!]
-  financialDetails: a.json(), // PlatformOnboardingFinancialDetails
-  generalInfo: a.json(), // PlatformOnboardingGeneralInfo
-  investmentDetails: a.json(), // PlatformOnboardingInvestmentDetails
-  riskProfile: a.json(), // PlatformOnboardingRiskProfile
-});
+// const PlatformOnboardingDataset = a.model({
+//   id: a.string().required(),
+//   configVersion: a.integer(),
+//   relation: PlatformOnboardingRelation,
+//   parentId: a.string(),
+//   createdAt: a.timestamp(),
+//   updatedAt: a.timestamp(),
+//   questionnaire: a.json().required(), // [PlatformOnboardingQuestionnaire!]
+//   financialDetails: a.json(), // PlatformOnboardingFinancialDetails
+//   generalInfo: a.json(), // PlatformOnboardingGeneralInfo
+//   investmentDetails: a.json(), // PlatformOnboardingInvestmentDetails
+//   riskProfile: a.json(), // PlatformOnboardingRiskProfile
+// });
 
-const PlatformMandateType = a.enum([
-  'ONE_TIME',
-  'RECURRENT'
-]);
+// const PlatformMandateType = a.enum([
+//   'ONE_TIME',
+//   'RECURRENT'
+// ]);
 
 // Non-model type
-const PlatformMandateAddress = a.model({
-  city: a.string().required(),
-  country: a.string().required(),
-  postcode: a.string().required(),
-  state: a.string().required(),
-  street: a.string().required(),
-  streetNumber: a.string().required(),
-});
+// const PlatformMandateAddress = a.model({
+//   city: a.string().required(),
+//   country: a.string().required(),
+//   postcode: a.string().required(),
+//   state: a.string().required(),
+//   street: a.string().required(),
+//   streetNumber: a.string().required(),
+// });
 
-// Non-model type
-const PlatformMandate = a.model({
-  accountHolder: a.string().required(),
-  bankName: a.string().required(),
-  bic: a.string().required(),
-  confirmedAt: a.timestamp().required(),
-  createdAt: a.timestamp().required(),
-  creditorAddress: a.json().required(), // PlatformMandateAddress
-  creditorId: a.string().required(),
-  creditorName: a.string().required(),
-  iban: a.string().required(),
-  id: a.string().required(),
-  reference: a.string().required(),
-  type: PlatformMandateType,
-  platformUserId: a.string().required(),
-});
+// // Non-model type
+// const PlatformMandate = a.model({
+//   accountHolder: a.string().required(),
+//   bankName: a.string().required(),
+//   bic: a.string().required(),
+//   confirmedAt: a.timestamp().required(),
+//   createdAt: a.timestamp().required(),
+//   creditorAddress: a.json().required(), // PlatformMandateAddress
+//   creditorId: a.string().required(),
+//   creditorName: a.string().required(),
+//   iban: a.string().required(),
+//   id: a.string().required(),
+//   reference: a.string().required(),
+//   type: PlatformMandateType,
+//   platformUserId: a.string().required(),
+// });
 
-const PlatformSavingsPlanStatus = a.enum([
-  'ACTIVE',
-  'INACTIVE'
-]);
+// const PlatformSavingsPlanStatus = a.enum([
+//   'ACTIVE',
+//   'INACTIVE'
+// ]);
 
-// non-model type
-const PlatformSavingsPlan = a.model({
-  id: a.id().required(),
-  platformUserId: a.string().required(),
-  platformContractId: a.string().required(),
-  platformBankAccountId: a.string().required(),
-  platformSavingsPlanId: a.string().required(),
-  platformMandateId: a.string(),
-  cashAmount: a.float().required(),
-  currency: a.string().required(),
-  interval: a.integer().required(),
-  intervalType: SavingsPlanIntervalType,
-  name: a.string(),
-  startDate: a.date().required(),
-  executionDay: a.integer(),
-  status: PlatformSavingsPlanStatus,
-  createdAt: a.timestamp().required(),
-  updatedAt: a.timestamp().required(),
-});
+// // non-model type
+// const PlatformSavingsPlan = a.model({
+//   id: a.id().required(),
+//   platformUserId: a.string().required(),
+//   platformContractId: a.string().required(),
+//   platformBankAccountId: a.string().required(),
+//   platformSavingsPlanId: a.string().required(),
+//   platformMandateId: a.string(),
+//   cashAmount: a.float().required(),
+//   currency: a.string().required(),
+//   interval: a.integer().required(),
+//   intervalType: SavingsPlanIntervalType,
+//   name: a.string(),
+//   startDate: a.date().required(),
+//   executionDay: a.integer(),
+//   status: PlatformSavingsPlanStatus,
+//   createdAt: a.timestamp().required(),
+//   updatedAt: a.timestamp().required(),
+// });
 
-// non-model type
-const PlatformUserAddress = a.model({
-  street: a.string(),
-  streetNumber: a.string(),
-  additionalAddressInfo: a.string(),
-  postcode: a.string(),
-  city: a.string(),
-  state: a.string(),
-  country: a.string(),
-});
+// // non-model type
+// const PlatformUserAddress = a.model({
+//   street: a.string(),
+//   streetNumber: a.string(),
+//   additionalAddressInfo: a.string(),
+//   postcode: a.string(),
+//   city: a.string(),
+//   state: a.string(),
+//   country: a.string(),
+// });
 
-// non-model type
-const PlatformUserTaxInformation = a.model({
-  tin: a.string(),
-  country: a.string(),
-});
+// // non-model type
+// const PlatformUserTaxInformation = a.model({
+//   tin: a.string(),
+//   country: a.string(),
+// });
 
-// non-model type
-const PlatformPortfolioPerformanceMetrics = a.model({
-  relax: a.integer().required(),
-  risk: a.integer().required(),
-  loss: a.float().required(),
-  profit: a.float().required(),
-  volatility: a.float().required(),
-  yield: a.float().required(),
-});
+// // non-model type
+// const PlatformPortfolioPerformanceMetrics = a.model({
+//   relax: a.integer().required(),
+//   risk: a.integer().required(),
+//   loss: a.float().required(),
+//   profit: a.float().required(),
+//   volatility: a.float().required(),
+//   yield: a.float().required(),
+// });
 
-// non-model type
-const PlatformPortfolioSecurity = a.model({
-  category: a.string().required(),
-  id: a.string().required(),
-  securityId: a.string().required(),
-  name: a.string().required(),
-  ter: a.float().required(),
-  weight: a.float().required(),
-  type: a.string().required(),
-});
+// // non-model type
+// const PlatformPortfolioSecurity = a.model({
+//   category: a.string().required(),
+//   id: a.string().required(),
+//   securityId: a.string().required(),
+//   name: a.string().required(),
+//   ter: a.float().required(),
+//   weight: a.float().required(),
+//   type: a.string().required(),
+// });
 
-// non-model type
-const PlatformPortfolioAllocation = a.model({
-  id: a.string().required(),
-  portfolioGroup: a.string().required(),
-  allocations: a.json().required(), // [PlatformPortfolioSecurity!]!
-  name: a.string().required(),
-  performanceMetrics: a.json().required(), // PlatformPortfolioPerformanceMetrics
-  averageTer: a.float().required(),
-});
+// // non-model type
+// const PlatformPortfolioAllocation = a.model({
+//   id: a.string().required(),
+//   portfolioGroup: a.string().required(),
+//   allocations: a.json().required(), // [PlatformPortfolioSecurity!]!
+//   name: a.string().required(),
+//   performanceMetrics: a.json().required(), // PlatformPortfolioPerformanceMetrics
+//   averageTer: a.float().required(),
+// });
 
-const PlatformBankAccountInterestStatus = a.enum([
-  'ACTIVE',
-  'PENDING',
-  'INACTIVE'
-]);
+// const PlatformBankAccountInterestStatus = a.enum([
+//   'ACTIVE',
+//   'PENDING',
+//   'INACTIVE'
+// ]);
 
-// non-model type
-const PlatformClearingBankAccount = a.model({
-  id: a.string().required(),
-  interestStatus: PlatformBankAccountInterestStatus,
-});
+// // non-model type
+// const PlatformClearingBankAccount = a.model({
+//   id: a.string().required(),
+//   interestStatus: PlatformBankAccountInterestStatus,
+// });
 
-const PlatformMoneyTransferStatus = a.enum([
-  'NEW',
-  'PROCESSING',
-  'CONFIRMED',
-  'CANCELED'
-]);
+// const PlatformMoneyTransferStatus = a.enum([
+//   'NEW',
+//   'PROCESSING',
+//   'CONFIRMED',
+//   'CANCELED'
+// ]);
 
-// non-model type
-const PlatformMoneyTransfer = a.model({
-  id: a.string().required(),
-  platformUserId: a.string().required(),
-  platformContractId: a.string().required(),
-  platformDebtorAccountId: a.string().required(),
-  platformCreditorAccountId: a.string().required(),
-  amount: a.float().required(),
-  currency: a.string().required(),
-  createdAt: a.timestamp().required(),
-  updatedAt: a.timestamp().required(),
-  status: PlatformMoneyTransferStatus,
-});
+// // non-model type
+// const PlatformMoneyTransfer = a.model({
+//   id: a.string().required(),
+//   platformUserId: a.string().required(),
+//   platformContractId: a.string().required(),
+//   platformDebtorAccountId: a.string().required(),
+//   platformCreditorAccountId: a.string().required(),
+//   amount: a.float().required(),
+//   currency: a.string().required(),
+//   createdAt: a.timestamp().required(),
+//   updatedAt: a.timestamp().required(),
+//   status: PlatformMoneyTransferStatus,
+// });
 
-const PlatformPortfolioInvestmentReallocationStatus = a.enum([
-  'NEW',
-  'PROCESSING',
-  'CONFIRMED',
-  'CANCELED'
-]);
+// const PlatformPortfolioInvestmentReallocationStatus = a.enum([
+//   'NEW',
+//   'PROCESSING',
+//   'CONFIRMED',
+//   'CANCELED'
+// ]);
 
-// non-model type
-const PlatformPortfolioInvestmentReallocation = a.model({
-  id: a.string(),
-  platformUserId: a.string(),
-  platformContractId: a.string(),
-  platformPortfolioInvestmentId: a.string(),
-  createdAt: a.timestamp(),
-  updatedAt: a.timestamp(),
-  closedAt: a.timestamp(),
-  canceledAt: a.timestamp(),
-  processedAt: a.timestamp(),
-  platformAllocationId: a.string(),
-  currentPlatformAllocationId: a.string(),
-  status: PlatformPortfolioInvestmentReallocationStatus,
-  processingDate: a.date(),
-});
+// // non-model type
+// const PlatformPortfolioInvestmentReallocation = a.model({
+//   id: a.string(),
+//   platformUserId: a.string(),
+//   platformContractId: a.string(),
+//   platformPortfolioInvestmentId: a.string(),
+//   createdAt: a.timestamp(),
+//   updatedAt: a.timestamp(),
+//   closedAt: a.timestamp(),
+//   canceledAt: a.timestamp(),
+//   processedAt: a.timestamp(),
+//   platformAllocationId: a.string(),
+//   currentPlatformAllocationId: a.string(),
+//   status: PlatformPortfolioInvestmentReallocationStatus,
+//   processingDate: a.date(),
+// });
 
-// non-model type
-const PlatformPortfolioInvestmentValuation = a.model({
-  id: a.string().required(),
-  createdAt: a.timestamp().required(),
-  updatedAt: a.timestamp().required(),
-  valuationTime: a.timestamp().required(),
+// // non-model type
+// const PlatformPortfolioInvestmentValuation = a.model({
+//   id: a.string().required(),
+//   createdAt: a.timestamp().required(),
+//   updatedAt: a.timestamp().required(),
+//   valuationTime: a.timestamp().required(),
 
-  platformContractId: a.string().required(),
-  platformPortfolioInvestmentId: a.string().required(),
-  currency: a.string().required(),
+//   platformContractId: a.string().required(),
+//   platformPortfolioInvestmentId: a.string().required(),
+//   currency: a.string().required(),
 
-  totalValue: a.float().required(),
-  totalCashBalance: a.float().required(),
-  totalSecurityValue: a.float().required(),
+//   totalValue: a.float().required(),
+//   totalCashBalance: a.float().required(),
+//   totalSecurityValue: a.float().required(),
 
-  pendingWithdrawalsSum: a.float().required(),
-  pendingMoneyTransfersSum: a.float().required(),
-  pendingDirectDebitSum: a.float().required(),
-});
+//   pendingWithdrawalsSum: a.float().required(),
+//   pendingMoneyTransfersSum: a.float().required(),
+//   pendingDirectDebitSum: a.float().required(),
+// });
 
-// non-model type
-const PlatformClearingAccountBalance = a.model({
-  platformContractId: a.string().required(),
-  platformClearingBankAccountId: a.string().required(),
-  currency: a.string().required(),
+// // non-model type
+// const PlatformClearingAccountBalance = a.model({
+//   platformContractId: a.string().required(),
+//   platformClearingBankAccountId: a.string().required(),
+//   currency: a.string().required(),
 
-  balance: a.float().required(),
-  availableBalance: a.float().required(),
-  preliminaryAvailableBalance: a.float().required(),
-  pendingDisbursementsSum: a.float().required(),
-  pendingMoneyTransfersSum: a.float().required(),
-});
+//   balance: a.float().required(),
+//   availableBalance: a.float().required(),
+//   preliminaryAvailableBalance: a.float().required(),
+//   pendingDisbursementsSum: a.float().required(),
+//   pendingMoneyTransfersSum: a.float().required(),
+// });
 
-// non-model type
-const PlatformContractValuation = a.model({
-  id: a.string().required(),
-  createdAt: a.timestamp().required(),
-  updatedAt: a.timestamp().required(),
-  valuationTime: a.timestamp().required(),
+// // non-model type
+// const PlatformContractValuation = a.model({
+//   id: a.string().required(),
+//   createdAt: a.timestamp().required(),
+//   updatedAt: a.timestamp().required(),
+//   valuationTime: a.timestamp().required(),
 
-  platformContractId: a.string().required(),
-  currency: a.string().required(),
+//   platformContractId: a.string().required(),
+//   currency: a.string().required(),
 
-  totalValue: a.float().required(),
-  totalCashBalance: a.float().required(),
-  totalSecurityValue: a.float().required(),
+//   totalValue: a.float().required(),
+//   totalCashBalance: a.float().required(),
+//   totalSecurityValue: a.float().required(),
 
-  debitReservationLastEightWeeks: a.float().required(),
-  pendingDisbursementsSum: a.float().required(),
-  pendingMoneyTransfersSum: a.float().required(),
-});
+//   debitReservationLastEightWeeks: a.float().required(),
+//   pendingDisbursementsSum: a.float().required(),
+//   pendingMoneyTransfersSum: a.float().required(),
+// });
 
-// non-model type
-const PlatformPortfolioInvestment = a.model({
-  id: a.string().required(),
-  createdAt: a.timestamp().required(),
-  updatedAt: a.timestamp().required(),
+// // non-model type
+// const PlatformPortfolioInvestment = a.model({
+//   id: a.string().required(),
+//   createdAt: a.timestamp().required(),
+//   updatedAt: a.timestamp().required(),
 
-  customName: a.string(),
-  platformAllocationId: a.string().required(),
-  platformContractId: a.string().required(),
-  platformOnboardingDatasetId: a.string().required(),
-  wphgConfirmedAt: a.timestamp(),
-});
+//   customName: a.string(),
+//   platformAllocationId: a.string().required(),
+//   platformContractId: a.string().required(),
+//   platformOnboardingDatasetId: a.string().required(),
+//   wphgConfirmedAt: a.timestamp(),
+// });
 
-// non-model type
-const PlatformPortfolioInvestmentDeletion = a.model({
-  id: a.string().required(),
-  platformPortfolioInvestmentId: a.string().required(),
-});
+// // non-model type
+// const PlatformPortfolioInvestmentDeletion = a.model({
+//   id: a.string().required(),
+//   platformPortfolioInvestmentId: a.string().required(),
+// });
 
-const PlatformDisbursementStatus = a.enum([
-  'NEW',
-  'CONFIRMED',
-  'APPROVED',
-  'PENDING',
-  'CLOSED',
-  'CANCELED'
-]);
+// const PlatformDisbursementStatus = a.enum([
+//   'NEW',
+//   'CONFIRMED',
+//   'APPROVED',
+//   'PENDING',
+//   'CLOSED',
+//   'CANCELED'
+// ]);
 
-// non-model type
-const PlatformDisbursement = a.model({
-  id: a.string().required(),
-  platformUserId: a.string().required(),
-  platformContractId: a.string().required(),
-  platformBankAccountId: a.string().required(),
-  platformReferenceAccountId: a.string().required(),
-  amount: a.float().required(),
-  currency: a.string().required(),
-  createdAt: a.timestamp().required(),
-  updatedAt: a.timestamp().required(),
-  status: PlatformDisbursementStatus,
-});
+// // non-model type
+// const PlatformDisbursement = a.model({
+//   id: a.string().required(),
+//   platformUserId: a.string().required(),
+//   platformContractId: a.string().required(),
+//   platformBankAccountId: a.string().required(),
+//   platformReferenceAccountId: a.string().required(),
+//   amount: a.float().required(),
+//   currency: a.string().required(),
+//   createdAt: a.timestamp().required(),
+//   updatedAt: a.timestamp().required(),
+//   status: PlatformDisbursementStatus,
+// });
 
-// non-model type
-const PlatformHistoryItem = a.model({
-  date: a.date().required(),
-  value: a.float().required(),
-});
+// // non-model type
+// const PlatformHistoryItem = a.model({
+//   date: a.date().required(),
+//   value: a.float().required(),
+// });
 
-const PlatformWithdrawalStatus = a.enum([
-  'NEW',
-  'PROCESSING',
-  'CONFIRMED',
-  'CANCELED'
-]);
+// const PlatformWithdrawalStatus = a.enum([
+//   'NEW',
+//   'PROCESSING',
+//   'CONFIRMED',
+//   'CANCELED'
+// ]);
 
-// non-model type
-const PlatformWithdrawal = a.model({
-  id: a.string().required(),
-  platformUserId: a.string().required(),
-  platformContractId: a.string().required(),
-  platformBankAccountId: a.string().required(),
-  amount: a.float().required(),
-  currency: a.string().required(),
-  createdAt: a.timestamp().required(),
-  updatedAt: a.timestamp().required(),
-  status: PlatformWithdrawalStatus,
-});
+// // non-model type
+// const PlatformWithdrawal = a.model({
+//   id: a.string().required(),
+//   platformUserId: a.string().required(),
+//   platformContractId: a.string().required(),
+//   platformBankAccountId: a.string().required(),
+//   amount: a.float().required(),
+//   currency: a.string().required(),
+//   createdAt: a.timestamp().required(),
+//   updatedAt: a.timestamp().required(),
+//   status: PlatformWithdrawalStatus,
+// });
 
-const PlatformTaxExemptionUserRole = a.enum([
-  'ACCOUNT_HOLDER',
-  'LEGAL_GUARDIAN'
-]);
+// const PlatformTaxExemptionUserRole = a.enum([
+//   'ACCOUNT_HOLDER',
+//   'LEGAL_GUARDIAN'
+// ]);
 
-const PlatformTaxExemptionStatus = a.enum([
-  'INACTIVE',
-  'PROCESSING',
-  'ACTIVE'
-]);
+// const PlatformTaxExemptionStatus = a.enum([
+//   'INACTIVE',
+//   'PROCESSING',
+//   'ACTIVE'
+// ]);
 
-// non-model type
-const PlatformTaxExemption = a.model({
-  platformTaxExemptionId: a.string(),
-  balance: a.float(),
-  createdAt: a.timestamp(),
-  endDate: a.date(),
-  startDate: a.date(),
-  status: a.string(),
-  updatedAt: a.timestamp(),
-  upperThreshold: a.float(),
-  users: a.json().required(), // [PlatformTaxExemptionUser!]
-});
+// // non-model type
+// const PlatformTaxExemption = a.model({
+//   platformTaxExemptionId: a.string(),
+//   balance: a.float(),
+//   createdAt: a.timestamp(),
+//   endDate: a.date(),
+//   startDate: a.date(),
+//   status: a.string(),
+//   updatedAt: a.timestamp(),
+//   upperThreshold: a.float(),
+//   users: a.json().required(), // [PlatformTaxExemptionUser!]
+// });
 
-const TransactionType = a.enum([
-  'TAX_PAYMENT',
-  'CREDIT_FUNDING',
-  'SEPA_DIRECT_DEBIT',
-  'SEPA_DIRECT_DEBIT_CHARGE_BACK',
-  'SECURITIES_PURCHASE',
-  'SECURITIES_SALE',
-  'OUTGOING_TRANSFER',
-  'FEE_COLLECTION',
-  'FEE_COLLECTION_CANCELLATION',
-  'CASH_BONUS',
-  'TRAILER_FEE_PAYMENT',
-  'CASH_DIVIDEND',
-  'TRANSFER',
-  'SUBSCRIPTION',
-  'WITHDRAWAL',
-  'SECURITIES_REFUND',
-  'LEDGER_TRANSFER',
-  'INCOMING_PAYMENT_REVERSAL',
-  'INTEREST_SETTLEMENT',
-  'UNKNOWN'
-]);
+// const TransactionType = a.enum([
+//   'TAX_PAYMENT',
+//   'CREDIT_FUNDING',
+//   'SEPA_DIRECT_DEBIT',
+//   'SEPA_DIRECT_DEBIT_CHARGE_BACK',
+//   'SECURITIES_PURCHASE',
+//   'SECURITIES_SALE',
+//   'OUTGOING_TRANSFER',
+//   'FEE_COLLECTION',
+//   'FEE_COLLECTION_CANCELLATION',
+//   'CASH_BONUS',
+//   'TRAILER_FEE_PAYMENT',
+//   'CASH_DIVIDEND',
+//   'TRANSFER',
+//   'SUBSCRIPTION',
+//   'WITHDRAWAL',
+//   'SECURITIES_REFUND',
+//   'LEDGER_TRANSFER',
+//   'INCOMING_PAYMENT_REVERSAL',
+//   'INTEREST_SETTLEMENT',
+//   'UNKNOWN'
+// ]);
 
-const TransactionStatus = a.enum([
-  'PENDING',
-  'CLOSED'
-]);
+// const TransactionStatus = a.enum([
+//   'PENDING',
+//   'CLOSED'
+// ]);
 
-const PlatformListTransactionsSortOrder = a.enum([
-  'ASC',
-  'DESC'
-]);
+// const PlatformListTransactionsSortOrder = a.enum([
+//   'ASC',
+//   'DESC'
+// ]);
 
-// non-model type
-const PlatformTransaction = a.model({
-  platformTransactionId: a.string().required(),
-  platformContractId: a.string().required(),
-  platformPortfolioInvestmentId: a.string(),
-  platformBankAccountId: a.string().required(),
-  bankAccountType: BankAccountCategoryData,
-  transactionType: TransactionType,
-  transactionStatus: TransactionStatus,
-  amount: a.float().required(),
-  currency: a.string().required(),
-  bookingText: a.string().required(),
-  bookingDate: a.timestamp().required(),
-  performanceDate: a.timestamp().required(),
-  valueDate: a.timestamp().required(),
-  createdAt: a.timestamp().required(),
-  updatedAt: a.timestamp().required(),
-});
+// // non-model type
+// const PlatformTransaction = a.model({
+//   platformTransactionId: a.string().required(),
+//   platformContractId: a.string().required(),
+//   platformPortfolioInvestmentId: a.string(),
+//   platformBankAccountId: a.string().required(),
+//   bankAccountType: BankAccountCategoryData,
+//   transactionType: TransactionType,
+//   transactionStatus: TransactionStatus,
+//   amount: a.float().required(),
+//   currency: a.string().required(),
+//   bookingText: a.string().required(),
+//   bookingDate: a.timestamp().required(),
+//   performanceDate: a.timestamp().required(),
+//   valueDate: a.timestamp().required(),
+//   createdAt: a.timestamp().required(),
+//   updatedAt: a.timestamp().required(),
+// });
 
-// non-model type
-const PlatformListTransactionsMeta = a.model({
-  count: a.integer().required(),
-  limit: a.integer().required(),
-  offset: a.integer().required(),
-  sortOrder: PlatformListTransactionsSortOrder,
-  sortBy: a.string().required(),
-  totalCount: a.integer().required(),
-});
+// // non-model type
+// const PlatformListTransactionsMeta = a.model({
+//   count: a.integer().required(),
+//   limit: a.integer().required(),
+//   offset: a.integer().required(),
+//   sortOrder: PlatformListTransactionsSortOrder,
+//   sortBy: a.string().required(),
+//   totalCount: a.integer().required(),
+// });
 
 
 //
 // ContractSubscription
 //
 
-const ContractSubscriptionOrderStatus = a.enum([
-  'NEW',
-  'PENDING',
-  'CANCELED',
-  'CLOSED'
-]);
+// const ContractSubscriptionOrderStatus = a.enum([
+//   'NEW',
+//   'PENDING',
+//   'CANCELED',
+//   'CLOSED'
+// ]);
 
-// non-model type
-const ContractSubscriptionOrder = a.model({
-  id: a.string().required(),
-  contractId: a.string().required(),
-  status: ContractSubscriptionOrderStatus,
-  servicePackage: ContractServicePackage,
-  canceledAt: a.timestamp(),
-  processedAt: a.timestamp(),
-  closedAt: a.timestamp(),
-  updatedAt: a.timestamp().required(),
-  createdAt: a.timestamp().required(),
-  earliestStartDate: a.date().required(),
-});
+// // non-model type
+// const ContractSubscriptionOrder = a.model({
+//   id: a.string().required(),
+//   contractId: a.string().required(),
+//   status: ContractSubscriptionOrderStatus,
+//   servicePackage: ContractServicePackage,
+//   canceledAt: a.timestamp(),
+//   processedAt: a.timestamp(),
+//   closedAt: a.timestamp(),
+//   updatedAt: a.timestamp().required(),
+//   createdAt: a.timestamp().required(),
+//   earliestStartDate: a.date().required(),
+// });
 
 
 
 const schema = a.schema({
-  ContractUserData,
-  ContractDeclarationData,
-  UserTaxId,
+  // ContractUserData,
+  //ContractDeclarationData,
+  //UserTaxId,
   BankAccountData,
   UserDetailData,
   EventData,
@@ -1675,63 +1675,63 @@ const schema = a.schema({
   DepotItemData,
   ProductData,
   TodoData,
-  ContractSubscriptionDetails,
-  PlatformOnboardingDataset,
-  PlatformOnboardingQuestionnaire,
-  PlatformOnboardingFinancialDetails,
-  PlatformOnboardingGeneralInfo,
-  PlatformOnboardingInvestmentDetails,
-  PlatformOnboardingRiskProfile,
-  PlatformMandateAddress,
-  PlatformMandate,
-  PlatformSavingsPlan,
-  PlatformUserAddress,
-  PlatformUserTaxInformation,
-  PlatformPortfolioPerformanceMetrics,
-  PlatformPortfolioSecurity,
-  PlatformPortfolioAllocation,
-  ContractSubscriptionOrder,
-  PlatformClearingBankAccount,
-  PlatformMoneyTransfer,
-  PlatformPortfolioInvestmentReallocation,
-  PlatformPortfolioInvestmentValuation,
-  PlatformClearingAccountBalance,
-  PlatformContractValuation,
-  PlatformPortfolioInvestment,
-  PlatformPortfolioInvestmentDeletion,
-  PlatformDisbursement,
-  PlatformHistoryItem,
-  PlatformWithdrawal,
-  PlatformTaxExemption,
-  PlatformTransaction,
-  PlatformListTransactionsMeta,
-  PlatformOnboardingRelation,
-  PlatformOnboardingInvestmentPaymentMethod,
-  PlatformOnboardingSavingsPlanPaymentMethod,
-  PlatformOnboardingInvestmentObjective,
-  PlatformOnboardingRiskPreference,
-  PlatformOnboardingRiskPerception,
-  PlatformOnboardingRiskTolerance,
-  PlatformOnboardingRiskAssessment,
-  PlatformOnboardingExperienceKnowledge,
-  PlatformOnboardingExperienceCrashes,
-  PlatformOnboardingExperienceTransactions,
-  PlatformFreeAssetsRange,
-  PlatformTiedAssetsRange,
-  PlatformLoansRange,
-  PlatformMonthlyExpensesRange,
-  PlatformMonthlyIncomeRange,
-  InvestmentHorizon,
-  InvestmentStrategy,
-  RiskScore,
-  Ownership,
-  ProductChoice,
-  SourceOfFunds,
-  PlatformTaxExemptionUserRole,
-  PlatformTaxExemptionStatus,
-  TransactionType,
-  TransactionStatus,
-  PlatformListTransactionsSortOrder
+  // ContractSubscriptionDetails,
+  // PlatformOnboardingDataset,
+  // PlatformOnboardingQuestionnaire,
+  // PlatformOnboardingFinancialDetails,
+  // PlatformOnboardingGeneralInfo,
+  // PlatformOnboardingInvestmentDetails,
+  // PlatformOnboardingRiskProfile,
+  // PlatformMandateAddress,
+  // PlatformMandate,
+  // PlatformSavingsPlan,
+  // PlatformUserAddress,
+  // PlatformUserTaxInformation,
+  // PlatformPortfolioPerformanceMetrics,
+  // PlatformPortfolioSecurity,
+  // PlatformPortfolioAllocation,
+  // ContractSubscriptionOrder,
+  // PlatformClearingBankAccount,
+  // PlatformMoneyTransfer,
+  // PlatformPortfolioInvestmentReallocation,
+  // PlatformPortfolioInvestmentValuation,
+  // PlatformClearingAccountBalance,
+  // PlatformContractValuation,
+  // PlatformPortfolioInvestment,
+  // PlatformPortfolioInvestmentDeletion,
+  // PlatformDisbursement,
+  // PlatformHistoryItem,
+  // PlatformWithdrawal,
+  // PlatformTaxExemption,
+  // PlatformTransaction,
+  // PlatformListTransactionsMeta,
+  // PlatformOnboardingRelation,
+  // PlatformOnboardingInvestmentPaymentMethod,
+  // PlatformOnboardingSavingsPlanPaymentMethod,
+  // PlatformOnboardingInvestmentObjective,
+  // PlatformOnboardingRiskPreference,
+  // PlatformOnboardingRiskPerception,
+  // PlatformOnboardingRiskTolerance,
+  // PlatformOnboardingRiskAssessment,
+  // PlatformOnboardingExperienceKnowledge,
+  // PlatformOnboardingExperienceCrashes,
+  // PlatformOnboardingExperienceTransactions,
+  // PlatformFreeAssetsRange,
+  // PlatformTiedAssetsRange,
+  // PlatformLoansRange,
+  // PlatformMonthlyExpensesRange,
+  // PlatformMonthlyIncomeRange,
+  // InvestmentHorizon,
+  // InvestmentStrategy,
+  // RiskScore,
+  // Ownership,
+  // ProductChoice,
+  // SourceOfFunds,
+  // PlatformTaxExemptionUserRole,
+  // PlatformTaxExemptionStatus,
+  // TransactionType,
+  // TransactionStatus,
+  // PlatformListTransactionsSortOrder
 });
 
 
