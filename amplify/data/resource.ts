@@ -320,7 +320,7 @@ const EventData = a.model({
   clusterId: a.string().required(),
   // TODO: comma-separated string or JSON
   subId: a.string().required(),
-}).identifier(['id', 'createdAt'])
+}).identifier(['id'])//, 'createdAt'])
   .secondaryIndexes((index) => [
     index("userDetailDataEventsId"),
     index("contractDataEventsId"),
@@ -850,7 +850,7 @@ const DirectDebitData = a.model({
   clusterId: a.string().required(),
   // TODO: comma-separated string or JSON
   subId: a.string().required(),
-}).identifier(['id', 'createdAt'])
+}).identifier(['id'])//, 'createdAt'])
   .secondaryIndexes((index) => [
     index("portfolioInvestmentDataDirectDebitsId"),
     index("bankAccountDataDirectDebitsId"),
@@ -888,7 +888,7 @@ const WithdrawalData = a.model({
   clusterId: a.string().required(),
   // TODO: comma-separated string or JSON
   subId: a.string().required(),
-}).identifier(['id', 'createdAt'])
+}).identifier(['id'])//, 'createdAt'])
   .secondaryIndexes((index) => [
     index("bankAccountDataWithdrawalsId"),
     index("portfolioInvestmentDataWithdrawalsId"),
@@ -923,7 +923,7 @@ const DisbursementData = a.model({
   clusterId: a.string().required(),
   // TODO: comma-separated string or JSON
   subId: a.string().required(),
-}).identifier(['id', 'createdAt'])
+}).identifier(['id'])//, 'createdAt'])
   .secondaryIndexes((index) => [
     index("bankAccountDataDisbursementsId"),
     index("referenceBankAccountDataDisbursementsId"),
@@ -967,7 +967,7 @@ const PostboxDocumentData = a.model({
   clusterId: a.string().required(),
   // TODO: comma-separated string or JSON
   subId: a.string().required(),
-}).identifier(['id', 'createdAt'])
+}).identifier(['id'])//, 'createdAt'])
   .secondaryIndexes((index) => [
     index("contractDataPostboxDocumentsId"),
     index("portfolioInvestmentDataPostboxDocumentsId"),
