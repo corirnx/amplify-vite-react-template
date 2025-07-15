@@ -32,9 +32,10 @@ const ProductData = a.model({
   subId: a.string().required(),
 }).secondaryIndexes((index) => [
   index("clusterId"),
-  index("contractDataProductsId"),
-  index("platformPricingId"),
-  index("platformOnboardingDatasetId"),
+  // build error, max. 20 GSIs
+  // index("contractDataProductsId"),
+  // index("platformPricingId"),
+  // index("platformOnboardingDatasetId"),
 ]).authorization((allow) => [
   /* 
     TODO:
@@ -95,9 +96,10 @@ const TodoData = a.model({
   subId: a.string().required(),
 }).secondaryIndexes((index) => [
   index("clusterId"),
-  index("userDetailDataTodosId"),
-  index("contractDataTodosId"),
-  index("productDataTodosId"),
+  // build error, max. 20 GSIs
+  // index("userDetailDataTodosId"),
+  // index("contractDataTodosId"),
+  // index("productDataTodosId"),
 ]).authorization((allow) => [
   /* 
     TODO:
@@ -202,9 +204,10 @@ const ContractData = a.model({
   // TODO: comma-separated string or JSON
   subId: a.string().required(),
 }).secondaryIndexes((index) => [
-  index("entity"),
-  index("platformContractId"),
-  index("platformOnboardingDatasetId"),
+  // build error, max. 20 GSIs
+  // index("entity"),
+  // index("platformContractId"),
+  // index("platformOnboardingDatasetId"),
   index("clusterId"),
 ]).authorization((allow) => [
   /* 
@@ -248,7 +251,8 @@ const DepotItemData = a.model({
   // TODO: comma-separated string or JSON
   subId: a.string().required(),
 }).secondaryIndexes((index) => [
-  index("portfolioInvestmentDataDepotItemsId"),
+  // build error, max. 20 GSIs
+  // index("portfolioInvestmentDataDepotItemsId"),
   index("clusterId"),
 ]).authorization((allow) => [
   /* 
@@ -324,16 +328,17 @@ const EventData = a.model({
   subId: a.string().required(),
 }).identifier(['id'])//, 'createdAt'])
   .secondaryIndexes((index) => [
-    index("userDetailDataEventsId"),
-    index("contractDataEventsId"),
-    index("productDataEventsId"),
-    index("savingsPlanDataEventsId"),
-    index("bankAccountDataEventsId"),
-    index("transferDataEventsId"),
-    index("directDebitDataEventsId"),
-    index("withdrawalDataEventsId"),
-    index("disbursementDataEventsId"),
-    index("postboxDocumentDataEventsId"),
+    // build error, max. 20 GSIs
+    // index("userDetailDataEventsId"),
+    // index("contractDataEventsId"),
+    // index("productDataEventsId"),
+    // index("savingsPlanDataEventsId"),
+    // index("bankAccountDataEventsId"),
+    // index("transferDataEventsId"),
+    // index("directDebitDataEventsId"),
+    // index("withdrawalDataEventsId"),
+    // index("disbursementDataEventsId"),
+    // index("postboxDocumentDataEventsId"),
     index("clusterId"),
   ]).authorization((allow) => [
     /* 
@@ -390,11 +395,12 @@ const SavingsPlanData = a.model({
   // TODO: comma-separated string or JSON
   subId: a.string().required(),
 }).secondaryIndexes((index) => [
-  index("contractDataSavingsPlansId"),
-  index("productDataSavingsPlansId"),
-  index("portfolioInvestmentDataSavingsPlansId"),
-  index("referenceBankAccountDataSavingsPlansId"),
-  index("debitBankAccountDataSavingsPlansId"),
+  // build error, max. 20 GSIs
+  // index("contractDataSavingsPlansId"),
+  // index("productDataSavingsPlansId"),
+  // index("portfolioInvestmentDataSavingsPlansId"),
+  // index("referenceBankAccountDataSavingsPlansId"),
+  // index("debitBankAccountDataSavingsPlansId"),
   index("clusterId"),
 ]).authorization((allow) => [
   /* 
@@ -550,9 +556,10 @@ const UserDetailData = a.model({
   subId: a.string().required(),
 }).identifier(['id'])
   .secondaryIndexes((index) => [
+    // build error, max. 20 GSIs
     index("clusterId"),
-    index("platformUserId"),
-    index("cognitoId"),
+    // index("platformUserId"),
+    // index("cognitoId"),
   ]).authorization((allow) => [
     /* 
       TODO:
@@ -611,9 +618,10 @@ const BankAccountData = a.model({
   // TODO: comma-separated string or JSON
   subId: a.string().required(),
 }).secondaryIndexes((index) => [
-  index("platformBankAccountId"),
-  index("contractDataClearingBankAccountsId"),
-  index("portfolioInvestmentDataLiquidBankAccountsId"),
+  // build error, max. 20 GSIs
+  // index("platformBankAccountId"),
+  // index("contractDataClearingBankAccountsId"),
+  // index("portfolioInvestmentDataLiquidBankAccountsId"),
   index("clusterId"),
 ]).authorization((allow) => [
   allow.owner("userPools")
@@ -646,8 +654,9 @@ const ReferenceBankAccountData = a.model({
   // TODO: comma-separated string or JSON
   subId: a.string().required(),
 }).secondaryIndexes((index) => [
-  index("contractDataReferenceBankAccountsId"),
-  index("platformReferenceAccountId"),
+  // build error, max. 20 GSIs
+  // index("contractDataReferenceBankAccountsId"),
+  // index("platformReferenceAccountId"),
   index("clusterId"),
 ]).authorization((allow) => [
   /* 
@@ -682,7 +691,8 @@ const DebitBankAccountData = a.model({
   // TODO: comma-separated string or JSON
   subId: a.string().required(),
 }).secondaryIndexes((index) => [
-  index("contractDataDebitBankAccountsId"),
+  // build error, max. 20 GSIs
+  // index("contractDataDebitBankAccountsId"),
   index("clusterId"),
 ]).authorization((allow) => [
   /* 
@@ -756,13 +766,14 @@ const PortfolioInvestmentData = a.model({
   // TODO: comma-separated string or JSON
   subId: a.string().required(),
 }).secondaryIndexes((index) => [
-  index("avaloqIpsId"),
-  index("entity"),
-  index("platformPortfolioAllocationId"),
-  index("platformPortfolioInvestmentId"),
-  index("platformPricingId"),
-  index("platformOnboardingDatasetId"),
-  index("productDataPortfolioInvestmentsId"),
+  // build error, max. 20 GSIs
+  // index("avaloqIpsId"),
+  // index("entity"),
+  // index("platformPortfolioAllocationId"),
+  // index("platformPortfolioInvestmentId"),
+  // index("platformPricingId"),
+  // index("platformOnboardingDatasetId"),
+  // index("productDataPortfolioInvestmentsId"),
   index("clusterId"),
 ]).authorization((allow) => [
   /* 
@@ -813,9 +824,10 @@ const TransferData = a.model({
   subId: a.string().required(),
 }).identifier(['id']) //, 'createdAt'])
   .secondaryIndexes((index) => [
-    index("portfolioInvestmentDataTransfersId"),
-    index("bankAccountDataTransfersId"),
-    index("platformMoneyTransferId"),
+    // build error, max. 20 GSIs
+    // index("portfolioInvestmentDataTransfersId"),
+    // index("bankAccountDataTransfersId"),
+    // index("platformMoneyTransferId"),
     index("clusterId"),
   ])
   .authorization((allow) => [
@@ -855,11 +867,12 @@ const DirectDebitData = a.model({
   subId: a.string().required(),
 }).identifier(['id'])//, 'createdAt'])
   .secondaryIndexes((index) => [
-    index("portfolioInvestmentDataDirectDebitsId"),
-    index("bankAccountDataDirectDebitsId"),
-    index("referenceBankAccountDataDirectDebitsId"),
-    index("debitBankAccountDataDirectDebitsId"),
-    index("platformDirectDebitId"),
+    // build error, max. 20 GSIs
+    // index("portfolioInvestmentDataDirectDebitsId"),
+    // index("bankAccountDataDirectDebitsId"),
+    // index("referenceBankAccountDataDirectDebitsId"),
+    // index("debitBankAccountDataDirectDebitsId"),
+    // index("platformDirectDebitId"),
     index("clusterId"),
   ]).authorization((allow) => [
     /* 
@@ -892,9 +905,10 @@ const WithdrawalData = a.model({
   subId: a.string().required(),
 }).identifier(['id'])//, 'createdAt'])
   .secondaryIndexes((index) => [
-    index("bankAccountDataWithdrawalsId"),
-    index("portfolioInvestmentDataWithdrawalsId"),
-    index("platformWithdrawalId"),
+    // build error, max. 20 GSIs
+    // index("bankAccountDataWithdrawalsId"),
+    // index("portfolioInvestmentDataWithdrawalsId"),
+    // index("platformWithdrawalId"),
     index("clusterId"),
   ]).authorization((allow) => [
     /* 
@@ -926,9 +940,10 @@ const DisbursementData = a.model({
   subId: a.string().required(),
 }).identifier(['id'])//, 'createdAt'])
   .secondaryIndexes((index) => [
-    index("bankAccountDataDisbursementsId"),
-    index("referenceBankAccountDataDisbursementsId"),
-    index("platformDisbursementId"),
+    // build error, max. 20 GSIs
+    // index("bankAccountDataDisbursementsId"),
+    // index("referenceBankAccountDataDisbursementsId"),
+    // index("platformDisbursementId"),
     index("clusterId"),
   ]).authorization((allow) => [
     /* 
@@ -969,8 +984,9 @@ const PostboxDocumentData = a.model({
   subId: a.string().required(),
 }).identifier(['id'])//, 'createdAt'])
   .secondaryIndexes((index) => [
-    index("contractDataPostboxDocumentsId"),
-    index("portfolioInvestmentDataPostboxDocumentsId"),
+    // build error, max. 20 GSIs
+    // index("contractDataPostboxDocumentsId"),
+    // index("portfolioInvestmentDataPostboxDocumentsId"),
     index("clusterId"),
   ]).authorization((allow) => [
     /* 
