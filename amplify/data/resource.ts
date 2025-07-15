@@ -26,7 +26,7 @@ const ProductData = a.model({
   contractDataProductsId: a.string(),
   // TODO: .ref() or .belongsTo()
   contract: a.belongsTo('ContractData', 'contractDataProductsId'),
-
+  
   clusterId: a.string().required(),
   // TODO: comma-separated string or JSON
   subId: a.string().required(),
@@ -798,9 +798,12 @@ const TransferData = a.model({
   voucherSerialNumber: a.string(),
   platformMoneyTransferId: a.string(),
   portfolioInvestmentDataTransfersId: a.string(),
-  bankAccountDataTransfersId: a.string(),
 
   events: a.hasMany('EventData', 'transferDataEventsId'),
+
+  bankAccountDataTransfersId: a.string(),
+  // TODO: .ref() or .belongsTo()
+  bankAccount: a.belongsTo('BankAccountData', 'bankAccountDataTransfersId'),
 
   clusterId: a.string().required(),
   // TODO: comma-separated string or JSON
