@@ -316,6 +316,7 @@ const EventData = a.model({
   withdrawal: a.belongsTo('WithdrawalData', 'withdrawalDataEventsId'),
   disbursement: a.belongsTo('DisbursementData', 'disbursementDataEventsId'),
   postboxDocument: a.belongsTo('PostboxDocumentData', 'postboxDocumentDataEventsId'),
+  portfolioInvestment: a.belongsTo('PortfolioInvestmentData', 'portfolioInvestmentDataEventsId'),
 
   clusterId: a.string().required(),
   // TODO: comma-separated string or JSON
