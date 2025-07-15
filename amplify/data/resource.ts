@@ -799,9 +799,10 @@ const TransferData = a.model({
   voucherCode: a.string(),
   voucherSerialNumber: a.string(),
   platformMoneyTransferId: a.string(),
-  // events: a.hasMany('EventData', 'transferDataEventsId'),
   bankAccountDataTransfersId: a.string(),
   portfolioInvestmentDataTransfersId: a.string(),
+
+  events: a.hasMany('EventData', 'transferDataEventsId'),
 
   // TODO: .ref() or .belongsTo()
   bankAccount: a.belongsTo('BankAccountData', 'bankAccountDataTransfersId'),
@@ -836,7 +837,9 @@ const DirectDebitData = a.model({
   description: a.string(),
   platformDirectDebitId: a.string(),
   platformMandateId: a.string(),
-  // events: a.hasMany('EventData', 'directDebitDataEventsId'),
+
+  events: a.hasMany('EventData', 'directDebitDataEventsId'),
+
   portfolioInvestmentDataDirectDebitsId: a.string(),
   bankAccountDataDirectDebitsId: a.string(),
   referenceBankAccountDataDirectDebitsId: a.string(),
@@ -876,8 +879,8 @@ const WithdrawalData = a.model({
   currency: a.string().required(),
   reason: a.string(),
   platformWithdrawalId: a.string(),
-  //   events: a.hasMany('EventData', 'withdrawalDataEventsId'),
 
+  events: a.hasMany('EventData', 'withdrawalDataEventsId'),
   bankAccountDataWithdrawalsId: a.string(),
   portfolioInvestmentDataWithdrawalsId: a.string(),
   // TODO: .ref() or .belongsTo()
@@ -910,8 +913,8 @@ const DisbursementData = a.model({
   amount: a.float().required(),
   currency: a.string().required(),
   platformDisbursementId: a.string(),
-  //   events: a.hasMany('EventData', 'disbursementDataEventsId'),
 
+  events: a.hasMany('EventData', 'disbursementDataEventsId'),
   bankAccountDataDisbursementsId: a.string(),
   referenceBankAccountDataDisbursementsId: a.string(),
   // TODO: .ref() or .belongsTo()
@@ -953,8 +956,8 @@ const PostboxDocumentData = a.model({
   description: a.string(),
   status: PostboxDocumentStatus,
   s3Key: a.string(),
-  //   events: a.hasMany('EventData', 'postboxDocumentDataEventsId'),
 
+  events: a.hasMany('EventData', 'postboxDocumentDataEventsId'),
   contractDataPostboxDocumentsId: a.string(),
   portfolioInvestmentDataPostboxDocumentsId: a.string(),
   // TODO: .ref() or .belongsTo()
