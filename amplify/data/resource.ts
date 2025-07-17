@@ -30,11 +30,10 @@ const ProductData = a.model({
   clusterId: a.string().required(),
   subId: a.string().array().required(),
 }).secondaryIndexes((index) => [
-  index("clusterId"),
-  // build error, max. 20 GSIs
-  // index("contractDataProductsId"),
-  // index("platformPricingId"),
-  // index("platformOnboardingDatasetId"),
+  index('platformPricingId'),
+  index('platformOnboardingDatasetId'),
+  index('contractDataProductsId'),
+  index('clusterId'),
 ]).authorization((allow) => [
   allow.owner().identityClaim('sub'),
   allow.ownersDefinedIn('subId')
@@ -88,11 +87,10 @@ const TodoData = a.model({
   clusterId: a.string().required(),
   subId: a.string().array().required(),
 }).secondaryIndexes((index) => [
-  index("clusterId"),
-  // build error, max. 20 GSIs
-  // index("userDetailDataTodosId"),
-  // index("contractDataTodosId"),
-  // index("productDataTodosId"),
+  index('userDetailDataTodosId'),
+  index('contractDataTodosId'),
+  index('productDataTodosId'),
+  index('clusterId'),
 ]).authorization((allow) => [
   allow.owner().identityClaim('sub'),
   allow.ownersDefinedIn('subId')
