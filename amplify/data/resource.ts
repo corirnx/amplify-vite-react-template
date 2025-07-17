@@ -651,20 +651,15 @@ const ReferenceBankAccountData = a.model({
   contract: a.belongsTo('ContractData', 'contractDataReferenceBankAccountsId'),
 
   clusterId: a.string().required(),
-  // TODO: comma-separated string or JSON
-  subId: a.string().required(),
+  subId: a.string().array().required(),
 }).secondaryIndexes((index) => [
   // build error, max. 20 GSIs
   // index("contractDataReferenceBankAccountsId"),
   // index("platformReferenceAccountId"),
   index("clusterId"),
 ]).authorization((allow) => [
-  /* 
-    TODO:
-    set when calling or defining the schema
-    allow: owner, provider: userPools, ownerField: "subId", identityClaim: "sub"
-  */
-  allow.owner("userPools")
+  allow.owner().identityClaim('sub'),
+  allow.ownersDefinedIn('subId')
 ]);
 
 
