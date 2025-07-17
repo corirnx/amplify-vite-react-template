@@ -30,10 +30,10 @@ const ProductData = a.model({
   clusterId: a.string().required(),
   subId: a.string().array().required(),
 }).secondaryIndexes((index) => [
-  index('platformPricingId'),
-  index('platformOnboardingDatasetId'),
+  // index('platformPricingId'),
+  // index('platformOnboardingDatasetId'),
   index('contractDataProductsId').queryField('productsByContract'),
-  index('clusterId'),
+  //index('clusterId'),
 ]).authorization((allow) => [
   allow.owner().identityClaim('sub'),
   allow.ownersDefinedIn('subId')
@@ -90,7 +90,7 @@ const TodoData = a.model({
   index('userDetailDataTodosId').queryField('todosByUser'),
   index('contractDataTodosId').queryField('todosByContract'),
   index('productDataTodosId').queryField('todosByProduct'),
-  index('clusterId'),
+  //index('clusterId'),
 ]).authorization((allow) => [
   allow.owner().identityClaim('sub'),
   allow.ownersDefinedIn('subId')
@@ -303,18 +303,18 @@ const EventData = a.model({
   .secondaryIndexes((index) => [
     index('accessLevel').sortKeys(['createdAt']).queryField('eventByAccessLevelAndCreatedAt'),
     index('category').sortKeys(['createdAt']).queryField('eventByCategoryAndCreatedAt'),
-    index('userDetailDataEventsId').sortKeys(['createdAt']).queryField('eventsByUser'),
-    index('contractDataEventsId').sortKeys(['createdAt']).queryField('eventsByContract'),
-    index('productDataEventsId').sortKeys(['createdAt']).queryField('eventsByProduct'),
-    index('savingsPlanDataEventsId').sortKeys(['createdAt']).queryField('eventsBySavingsPlan'),
-    index('bankAccountDataEventsId').sortKeys(['createdAt']).queryField('eventsByBankAccount'),
-    index('transferDataEventsId').sortKeys(['createdAt']).queryField('eventsByTransfer'),
-    index('directDebitDataEventsId').sortKeys(['createdAt']).queryField('eventsByDirectDebit'),
-    index('withdrawalDataEventsId').sortKeys(['createdAt']).queryField('eventsByWithdrawal'),
-    index('disbursementDataEventsId').sortKeys(['createdAt']).queryField('eventsByDisbursement'),
-    index('transactionDataEventsId').sortKeys(['createdAt']).queryField('eventsByTransaction'),
-    index('postboxDocumentDataEventsId').sortKeys(['createdAt']).queryField('eventsByPostboxDocument'),
-    index('clusterId'),
+    // index('userDetailDataEventsId').sortKeys(['createdAt']).queryField('eventsByUser'),
+    // index('contractDataEventsId').sortKeys(['createdAt']).queryField('eventsByContract'),
+    // index('productDataEventsId').sortKeys(['createdAt']).queryField('eventsByProduct'),
+    // index('savingsPlanDataEventsId').sortKeys(['createdAt']).queryField('eventsBySavingsPlan'),
+    // index('bankAccountDataEventsId').sortKeys(['createdAt']).queryField('eventsByBankAccount'),
+    // index('transferDataEventsId').sortKeys(['createdAt']).queryField('eventsByTransfer'),
+    // index('directDebitDataEventsId').sortKeys(['createdAt']).queryField('eventsByDirectDebit'),
+    // index('withdrawalDataEventsId').sortKeys(['createdAt']).queryField('eventsByWithdrawal'),
+    // index('disbursementDataEventsId').sortKeys(['createdAt']).queryField('eventsByDisbursement'),
+    // index('transactionDataEventsId').sortKeys(['createdAt']).queryField('eventsByTransaction'),
+    // index('postboxDocumentDataEventsId').sortKeys(['createdAt']).queryField('eventsByPostboxDocument'),
+    // index('clusterId'),
   ]).authorization((allow) => [
     allow.owner().identityClaim('sub'),
     allow.ownersDefinedIn('subId')
