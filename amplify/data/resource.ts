@@ -301,7 +301,6 @@ const EventData = a.model({
   subId: a.string().array().required(),
 }).identifier(['id'])
   .secondaryIndexes((index) => [
-    index('id').sortKeys(['createdAt']),
     index('accessLevel').sortKeys(['createdAt']).queryField('eventByAccessLevelAndCreatedAt'),
     index('category').sortKeys(['createdAt']).queryField('eventByCategoryAndCreatedAt'),
     index('userDetailDataEventsId').sortKeys(['createdAt']).queryField('eventsByUser'),
@@ -764,9 +763,8 @@ const TransferData = a.model({
 
   clusterId: a.string().required(),
   subId: a.string().array().required(),
-}).identifier(['id']) //, 'createdAt'])
+}).identifier(['id'])
   .secondaryIndexes((index) => [
-    index('id').sortKeys(['createdAt']),
     index("platformMoneyTransferId"),
     index("portfolioInvestmentDataTransfersId").sortKeys(["createdAt"]).queryField("transfersByPortfolioInvestment"),
     index("bankAccountDataTransfersId").sortKeys(["createdAt"]).queryField("transfersByBankAccount"),
@@ -801,9 +799,8 @@ const DirectDebitData = a.model({
 
   clusterId: a.string().required(),
   subId: a.string().array().required(),
-}).identifier(['id'])//, 'createdAt'])
+}).identifier(['id'])
   .secondaryIndexes((index) => [
-    index('id').sortKeys(['createdAt']),
     index("platformDirectDebitId"),
     index("platformMandateId"),
     index("portfolioInvestmentDataDirectDebitsId").sortKeys(["createdAt"]).queryField("directDebitsByPortfolioInvestment"),
@@ -835,9 +832,8 @@ const WithdrawalData = a.model({
 
   clusterId: a.string().required(),
   subId: a.string().array().required(),
-}).identifier(['id'])//, 'createdAt'])
+}).identifier(['id'])
   .secondaryIndexes((index) => [
-    index('id').sortKeys(['createdAt']),
     index("bankAccountDataWithdrawalsId"),
     index("portfolioInvestmentDataWithdrawalsId"),
     index("platformWithdrawalId"),
@@ -865,9 +861,8 @@ const DisbursementData = a.model({
 
   clusterId: a.string().required(),
   subId: a.string().array().required(),
-}).identifier(['id'])//, 'createdAt'])
+}).identifier(['id'])
   .secondaryIndexes((index) => [
-    index('id').sortKeys(['createdAt']),
     index("platformDisbursementId"),
     index("bankAccountDataDisbursementsId").sortKeys(["createdAt"]).queryField("disbursementsByBankAccount"),
     index("referenceBankAccountDataDisbursementsId").sortKeys(["createdAt"]).queryField("disbursementsByReferenceBankAccount"),
@@ -903,9 +898,8 @@ const PostboxDocumentData = a.model({
 
   clusterId: a.string().required(),
   subId: a.string().array().required(),
-}).identifier(['id'])//, 'createdAt'])
+}).identifier(['id'])
   .secondaryIndexes((index) => [
-    index('id').sortKeys(['createdAt']),
     index("contractDataPostboxDocumentsId").sortKeys(["createdAt"]).queryField("postboxDocumentsByContract"),
     index("portfolioInvestmentDataPostboxDocumentsId").sortKeys(["createdAt"]).queryField("postboxDocumentsByPortfolioInvestment"),
     index("clusterId"),
