@@ -32,7 +32,7 @@ const ProductData = a.model({
 }).secondaryIndexes((index) => [
   index('platformPricingId'),
   index('platformOnboardingDatasetId'),
-  index('contractDataProductsId'),
+  index('contractDataProductsId').queryField('productsByContract'),
   index('clusterId'),
 ]).authorization((allow) => [
   allow.owner().identityClaim('sub'),
@@ -87,9 +87,9 @@ const TodoData = a.model({
   clusterId: a.string().required(),
   subId: a.string().array().required(),
 }).secondaryIndexes((index) => [
-  index('userDetailDataTodosId'),
-  index('contractDataTodosId'),
-  index('productDataTodosId'),
+  index('userDetailDataTodosId').queryField('todosByUser'),
+  index('contractDataTodosId').queryField('todosByContract'),
+  index('productDataTodosId').queryField('todosByProduct'),
   index('clusterId'),
 ]).authorization((allow) => [
   allow.owner().identityClaim('sub'),
@@ -190,11 +190,10 @@ const ContractData = a.model({
   clusterId: a.string().required(),
   subId: a.string().array().required(),
 }).secondaryIndexes((index) => [
-  // build error, max. 20 GSIs
-  // index("entity"),
-  // index("platformContractId"),
-  // index("platformOnboardingDatasetId"),
-  index("clusterId"),
+  index('entity').sortKeys(["wphgConfirmedAt"]).queryField('contractsByEntityAndWphgConfirmedAt'),
+  index('platformContractId'),
+  index('platformOnboardingDatasetId'),
+  index('clusterId'),
 ]).authorization((allow) => [
   allow.owner().identityClaim('sub'),
   allow.ownersDefinedIn('subId')
@@ -231,8 +230,7 @@ const DepotItemData = a.model({
   clusterId: a.string().required(),
   subId: a.string().array().required(),
 }).secondaryIndexes((index) => [
-  // build error, max. 20 GSIs
-  // index("portfolioInvestmentDataDepotItemsId"),
+  index("portfolioInvestmentDataDepotItemsId").queryField('depotItemsByPortfolioInvestment'),
   index("clusterId"),
 ]).authorization((allow) => [
   allow.owner().identityClaim('sub'),
@@ -303,18 +301,20 @@ const EventData = a.model({
   subId: a.string().array().required(),
 }).identifier(['id'])//, 'createdAt'])
   .secondaryIndexes((index) => [
-    // build error, max. 20 GSIs
-    // index("userDetailDataEventsId"),
-    // index("contractDataEventsId"),
-    // index("productDataEventsId"),
-    // index("savingsPlanDataEventsId"),
-    // index("bankAccountDataEventsId"),
-    // index("transferDataEventsId"),
-    // index("directDebitDataEventsId"),
-    // index("withdrawalDataEventsId"),
-    // index("disbursementDataEventsId"),
-    // index("postboxDocumentDataEventsId"),
-    index("clusterId"),
+    index('accessLevel').sortKeys(['createdAt']).queryField('eventByAccessLevelAndCreatedAt'),
+    index('category').sortKeys(['createdAt']).queryField('eventByCategoryAndCreatedAt'),
+    index('userDetailDataEventsId').sortKeys(['createdAt']).queryField('eventsByUser'),
+    index('contractDataEventsId').sortKeys(['createdAt']).queryField('eventsByContract'),
+    index('productDataEventsId').sortKeys(['createdAt']).queryField('eventsByProduct'),
+    index('savingsPlanDataEventsId').sortKeys(['createdAt']).queryField('eventsBySavingsPlan'),
+    index('bankAccountDataEventsId').sortKeys(['createdAt']).queryField('eventsByBankAccount'),
+    index('transferDataEventsId').sortKeys(['createdAt']).queryField('eventsByTransfer'),
+    index('directDebitDataEventsId').sortKeys(['createdAt']).queryField('eventsByDirectDebit'),
+    index('withdrawalDataEventsId').sortKeys(['createdAt']).queryField('eventsByWithdrawal'),
+    index('disbursementDataEventsId').sortKeys(['createdAt']).queryField('eventsByDisbursement'),
+    index('transactionDataEventsId').sortKeys(['createdAt']).queryField('eventsByTransaction'),
+    index('postboxDocumentDataEventsId').sortKeys(['createdAt']).queryField('eventsByPostboxDocument'),
+    index('clusterId'),
   ]).authorization((allow) => [
     allow.owner().identityClaim('sub'),
     allow.ownersDefinedIn('subId')
