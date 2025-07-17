@@ -28,8 +28,7 @@ const ProductData = a.model({
   contract: a.belongsTo('ContractData', 'contractDataProductsId'),
 
   clusterId: a.string().required(),
-  // TODO: comma-separated string or JSON
-  subId: a.string().required(),
+  subId: a.string().array().required(),
 }).secondaryIndexes((index) => [
   index("clusterId"),
   // build error, max. 20 GSIs
@@ -37,14 +36,9 @@ const ProductData = a.model({
   // index("platformPricingId"),
   // index("platformOnboardingDatasetId"),
 ]).authorization((allow) => [
-  /* 
-    TODO:
-    set when calling or defining the schema
-    allow: owner, provider: userPools, ownerField: "subId", identityClaim: "sub"
-  */
-  allow.owner("userPools")
+  allow.owner().identityClaim('sub'),
+  allow.ownersDefinedIn('subId')
 ]);
-
 
 
 //
@@ -92,8 +86,7 @@ const TodoData = a.model({
   product: a.belongsTo('ProductData', 'productDataTodosId'),
 
   clusterId: a.string().required(),
-  // TODO: comma-separated string or JSON
-  subId: a.string().required(),
+  subId: a.string().array().required(),
 }).secondaryIndexes((index) => [
   index("clusterId"),
   // build error, max. 20 GSIs
@@ -101,12 +94,8 @@ const TodoData = a.model({
   // index("contractDataTodosId"),
   // index("productDataTodosId"),
 ]).authorization((allow) => [
-  /* 
-    TODO:
-    set when calling or defining the schema
-    allow: owner, provider: userPools, ownerField: "subId", identityClaim: "sub"
-  */
-  allow.owner("userPools")
+  allow.owner().identityClaim('sub'),
+  allow.ownersDefinedIn('subId')
 ]);
 
 
@@ -201,8 +190,7 @@ const ContractData = a.model({
   debitBankAccounts: a.hasMany('DebitBankAccountData', 'contractDataDebitBankAccountsId'),
 
   clusterId: a.string().required(),
-  // TODO: comma-separated string or JSON
-  subId: a.string().required(),
+  subId: a.string().array().required(),
 }).secondaryIndexes((index) => [
   // build error, max. 20 GSIs
   // index("entity"),
@@ -210,14 +198,9 @@ const ContractData = a.model({
   // index("platformOnboardingDatasetId"),
   index("clusterId"),
 ]).authorization((allow) => [
-  /* 
-    TODO:
-    set when calling or defining the schema
-    allow: owner, provider: userPools, ownerField: "subId", identityClaim: "sub"
-  */
-  allow.owner("userPools")
+  allow.owner().identityClaim('sub'),
+  allow.ownersDefinedIn('subId')
 ]);
-
 
 
 //
@@ -248,19 +231,14 @@ const DepotItemData = a.model({
   portfolioInvestment: a.belongsTo('PortfolioInvestmentData', 'portfolioInvestmentDataDepotItemsId'),
 
   clusterId: a.string().required(),
-  // TODO: comma-separated string or JSON
-  subId: a.string().required(),
+  subId: a.string().array().required(),
 }).secondaryIndexes((index) => [
   // build error, max. 20 GSIs
   // index("portfolioInvestmentDataDepotItemsId"),
   index("clusterId"),
 ]).authorization((allow) => [
-  /* 
-    TODO:
-    set when calling or defining the schema
-    allow: owner, provider: userPools, ownerField: "subId", identityClaim: "sub"
-  */
-  allow.owner("userPools")
+  allow.owner().identityClaim('sub'),
+  allow.ownersDefinedIn('subId')
 ]);
 
 
@@ -324,8 +302,7 @@ const EventData = a.model({
   portfolioInvestment: a.belongsTo('PortfolioInvestmentData', 'portfolioInvestmentDataEventsId'),
 
   clusterId: a.string().required(),
-  // TODO: comma-separated string or JSON
-  subId: a.string().required(),
+  subId: a.string().array().required(),
 }).identifier(['id'])//, 'createdAt'])
   .secondaryIndexes((index) => [
     // build error, max. 20 GSIs
@@ -341,14 +318,9 @@ const EventData = a.model({
     // index("postboxDocumentDataEventsId"),
     index("clusterId"),
   ]).authorization((allow) => [
-    /* 
-      TODO:
-      set when calling or defining the schema
-      allow: owner, provider: userPools, ownerField: "subId", identityClaim: "sub"
-    */
-    allow.owner("userPools")
+    allow.owner().identityClaim('sub'),
+    allow.ownersDefinedIn('subId')
   ]);
-
 
 
 //
@@ -392,8 +364,7 @@ const SavingsPlanData = a.model({
   events: a.hasMany('EventData', 'savingsPlanDataEventsId'),
 
   clusterId: a.string().required(),
-  // TODO: comma-separated string or JSON
-  subId: a.string().required(),
+  subId: a.string().array().required(),
 }).secondaryIndexes((index) => [
   // build error, max. 20 GSIs
   // index("contractDataSavingsPlansId"),
@@ -403,14 +374,9 @@ const SavingsPlanData = a.model({
   // index("debitBankAccountDataSavingsPlansId"),
   index("clusterId"),
 ]).authorization((allow) => [
-  /* 
-    TODO:
-    set when calling or defining the schema
-    allow: owner, provider: userPools, ownerField: "subId", identityClaim: "sub"
-  */
-  allow.owner("userPools")
+  allow.owner().identityClaim('sub'),
+  allow.ownersDefinedIn('subId')
 ]);
-
 
 
 //
@@ -552,8 +518,7 @@ const UserDetailData = a.model({
   todos: a.hasMany('TodoData', 'userDetailDataTodosId'),
 
   clusterId: a.string().required(),
-  // TODO: comma-separated string or JSON
-  subId: a.string().required(),
+  subId: a.string().array().required(),
 }).identifier(['id'])
   .secondaryIndexes((index) => [
     // build error, max. 20 GSIs
@@ -561,14 +526,9 @@ const UserDetailData = a.model({
     // index("platformUserId"),
     // index("cognitoId"),
   ]).authorization((allow) => [
-    /* 
-      TODO:
-      set when calling or defining the schema
-      allow: owner, provider: userPools, ownerField: "subId", identityClaim: "sub"
-    */
-    allow.owner("userPools")
+    allow.owner().identityClaim('sub'),
+    allow.ownersDefinedIn('subId')
   ]);
-
 
 
 //
@@ -615,8 +575,7 @@ const BankAccountData = a.model({
   portfolioInvestment: a.belongsTo('PortfolioInvestmentData', 'portfolioInvestmentDataLiquidBankAccountsId'),
 
   clusterId: a.string().required(),
-  // TODO: comma-separated string or JSON
-  subId: a.string().required(),
+  subId: a.string().array().required(),
 }).secondaryIndexes((index) => [
   // build error, max. 20 GSIs
   // index("platformBankAccountId"),
@@ -624,9 +583,9 @@ const BankAccountData = a.model({
   // index("portfolioInvestmentDataLiquidBankAccountsId"),
   index("clusterId"),
 ]).authorization((allow) => [
-  allow.owner("userPools")
+  allow.owner().identityClaim('sub'),
+  allow.ownersDefinedIn('subId')
 ]);
-
 
 const ReferenceBankAccountData = a.model({
   id: a.id().required(),
@@ -683,19 +642,14 @@ const DebitBankAccountData = a.model({
   contract: a.belongsTo('ContractData', 'contractDataDebitBankAccountsId'),
 
   clusterId: a.string().required(),
-  // TODO: comma-separated string or JSON
-  subId: a.string().required(),
+  subId: a.string().array().required(),
 }).secondaryIndexes((index) => [
   // build error, max. 20 GSIs
   // index("contractDataDebitBankAccountsId"),
   index("clusterId"),
 ]).authorization((allow) => [
-  /* 
-    TODO:
-    set when calling or defining the schema
-    allow: owner, provider: userPools, ownerField: "subId", identityClaim: "sub"
-  */
-  allow.owner("userPools")
+  allow.owner().identityClaim('sub'),
+  allow.ownersDefinedIn('subId')
 ]);
 
 
@@ -758,8 +712,7 @@ const PortfolioInvestmentData = a.model({
   product: a.belongsTo('ProductData', 'productDataPortfolioInvestmentsId'),
 
   clusterId: a.string().required(),
-  // TODO: comma-separated string or JSON
-  subId: a.string().required(),
+  subId: a.string().array().required(),
 }).secondaryIndexes((index) => [
   // build error, max. 20 GSIs
   // index("avaloqIpsId"),
@@ -771,12 +724,8 @@ const PortfolioInvestmentData = a.model({
   // index("productDataPortfolioInvestmentsId"),
   index("clusterId"),
 ]).authorization((allow) => [
-  /* 
-    TODO:
-    set when calling or defining the schema
-    allow: owner, provider: userPools, ownerField: "subId", identityClaim: "sub"
-  */
-  allow.owner("userPools")
+  allow.owner().identityClaim('sub'),
+  allow.ownersDefinedIn('subId')
 ]);
 
 
@@ -815,8 +764,7 @@ const TransferData = a.model({
   portfolioInvestment: a.belongsTo('PortfolioInvestmentData', 'portfolioInvestmentDataTransfersId'),
 
   clusterId: a.string().required(),
-  // TODO: comma-separated string or JSON
-  subId: a.string().required(),
+  subId: a.string().array().required(),
 }).identifier(['id']) //, 'createdAt'])
   .secondaryIndexes((index) => [
     // build error, max. 20 GSIs
@@ -824,14 +772,9 @@ const TransferData = a.model({
     // index("bankAccountDataTransfersId"),
     // index("platformMoneyTransferId"),
     index("clusterId"),
-  ])
-  .authorization((allow) => [
-    /* 
-      TODO:
-      set when calling or defining the schema
-      allow: owner, provider: userPools, ownerField: "subId", identityClaim: "sub"
-    */
-    allow.owner("userPools")
+  ]).authorization((allow) => [
+    allow.owner().identityClaim('sub'),
+    allow.ownersDefinedIn('subId')
   ]);
 
 const DirectDebitData = a.model({
@@ -858,8 +801,7 @@ const DirectDebitData = a.model({
   debitBankAccount: a.belongsTo('DebitBankAccountData', 'debitBankAccountDataDirectDebitsId'),
 
   clusterId: a.string().required(),
-  // TODO: comma-separated string or JSON
-  subId: a.string().required(),
+  subId: a.string().array().required(),
 }).identifier(['id'])//, 'createdAt'])
   .secondaryIndexes((index) => [
     // build error, max. 20 GSIs
@@ -870,12 +812,8 @@ const DirectDebitData = a.model({
     // index("platformDirectDebitId"),
     index("clusterId"),
   ]).authorization((allow) => [
-    /* 
-      TODO:
-      set when calling or defining the schema
-      allow: owner, provider: userPools, ownerField: "subId", identityClaim: "sub"
-    */
-    allow.owner("userPools")
+    allow.owner().identityClaim('sub'),
+    allow.ownersDefinedIn('subId')
   ]);
 
 const WithdrawalData = a.model({
@@ -896,8 +834,7 @@ const WithdrawalData = a.model({
   portfolioInvestment: a.belongsTo('PortfolioInvestmentData', 'portfolioInvestmentDataWithdrawalsId'),
 
   clusterId: a.string().required(),
-  // TODO: comma-separated string or JSON
-  subId: a.string().required(),
+  subId: a.string().array().required(),
 }).identifier(['id'])//, 'createdAt'])
   .secondaryIndexes((index) => [
     // build error, max. 20 GSIs
@@ -906,12 +843,8 @@ const WithdrawalData = a.model({
     // index("platformWithdrawalId"),
     index("clusterId"),
   ]).authorization((allow) => [
-    /* 
-      TODO:
-      set when calling or defining the schema
-      allow: owner, provider: userPools, ownerField: "subId", identityClaim: "sub"
-    */
-    allow.owner("userPools")
+    allow.owner().identityClaim('sub'),
+    allow.ownersDefinedIn('subId')
   ]);
 
 const DisbursementData = a.model({
@@ -931,8 +864,7 @@ const DisbursementData = a.model({
   referenceBankAccount: a.belongsTo('ReferenceBankAccountData', 'referenceBankAccountDataDisbursementsId'),
 
   clusterId: a.string().required(),
-  // TODO: comma-separated string or JSON
-  subId: a.string().required(),
+  subId: a.string().array().required(),
 }).identifier(['id'])//, 'createdAt'])
   .secondaryIndexes((index) => [
     // build error, max. 20 GSIs
@@ -941,14 +873,9 @@ const DisbursementData = a.model({
     // index("platformDisbursementId"),
     index("clusterId"),
   ]).authorization((allow) => [
-    /* 
-      TODO:
-      set when calling or defining the schema
-      allow: owner, provider: userPools, ownerField: "subId", identityClaim: "sub"
-    */
-    allow.owner("userPools")
+    allow.owner().identityClaim('sub'),
+    allow.ownersDefinedIn('subId')
   ]);
-
 
 
 //
@@ -975,8 +902,7 @@ const PostboxDocumentData = a.model({
   portfolioInvestment: a.belongsTo('PortfolioInvestmentData', 'portfolioInvestmentDataPostboxDocumentsId'),
 
   clusterId: a.string().required(),
-  // TODO: comma-separated string or JSON
-  subId: a.string().required(),
+  subId: a.string().array().required(),
 }).identifier(['id'])//, 'createdAt'])
   .secondaryIndexes((index) => [
     // build error, max. 20 GSIs
@@ -984,14 +910,9 @@ const PostboxDocumentData = a.model({
     // index("portfolioInvestmentDataPostboxDocumentsId"),
     index("clusterId"),
   ]).authorization((allow) => [
-    /* 
-      TODO:
-      set when calling or defining the schema
-      allow: owner, provider: userPools, ownerField: "subId", identityClaim: "sub"
-    */
-    allow.owner("userPools")
+    allow.owner().identityClaim('sub'),
+    allow.ownersDefinedIn('subId')
   ]);
-
 
 
 //
